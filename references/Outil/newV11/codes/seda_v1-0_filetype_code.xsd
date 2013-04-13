@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ===========================================================
+ ===== Code List: File Type Code                       =====
+ ===== Extrait des PUID du registre PRONOM             =====
+ ===== a l'exception des PUID en x-fmt/                =====
+ ===========================================================
+
+	Schema agency: Service interministériel des archives de France (SIAF)
+	Schema version: 1.0
+	Schema date: 2012-10-06
+
+	Copyright (c) 2011 Service interministériel des archives de France
+
+	Ce document est sous licence Creative Commons Paternité 2.0 France.
+	Pour accéder à une copie de cette licence, merci de vous rendre à l'adresse suivante
+	http://creativecommons.org/licenses/by/2.0/fr/ ou envoyez un courrier à
+	Creative Commons, 444 Castro Street, Suite 900,
+	Mountain View, California, 94041, USA.
+-->
+
+<xsd:schema xmlns:ccts="urn:un:unece:uncefact:documentation:standard:CoreComponentsTechnicalSpecification:2"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:clmDAFFileTypeCode="urn:un:unece:uncefact:codelist:DAF:fileTypeCode"
+            xmlns="urn:un:unece:uncefact:codelist:DAF:fileTypeCode"
+            version="1.0"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified"
+            targetNamespace="urn:un:unece:uncefact:codelist:DAF:fileTypeCode" >
+
+<!--
+=====  Root Element Declaration				      =====
+-->
+
+<xsd:element name="FileTypeCode" type="clmDAFFileTypeCode:FileTypeCodeType"/>
+
+   <!--
+===== Code List FileType: FileType Code =====
+-->
+
+<xsd:simpleType name="FileTypeCodeType">
+      <xsd:annotation>
+         <xsd:documentation xml:lang="fr">
+            <ccts:Name>Table des formats de fichier</ccts:Name>
+            <ccts:Description>Source: le registre PRONOM. Seuls ont été retenus les PUID non préfixés par "x-fmt"</ccts:Description>
+            <ccts:MIMEType>MimeType associé</ccts:MIMEType>
+            <ccts:Extension>Extensions associées dans une liste avec ',' comme séparateur</ccts:Extension>
+         </xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:token">
+      	<xsd:pattern value="fmt/[0-9]*"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+</xsd:schema>

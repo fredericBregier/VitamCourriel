@@ -1,0 +1,2753 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><CONFIG_JAXE>
+<LANGAGE>
+<FICHIER_SCHEMA nom="v10/seda_v1-0.xsd"/>
+<RACINE element="ArchiveTransfer"/>
+<RACINE element="ArchiveTransferReply"/>
+<RACINE element="ArchiveTransferRequest"/>
+<RACINE element="ArchiveTransferRequestReply"/>
+<RACINE element="ArchiveModificationNotification"/>
+<RACINE element="ArchiveDestructionNotification"/>
+<RACINE element="ArchiveDeliveryRequest"/>
+<RACINE element="ArchiveDeliveryRequestReply"/>
+<RACINE element="ArchiveRestitutionRequest"/>
+<RACINE element="ArchiveRestitutionRequestReply"/>
+<RACINE element="ArchiveRestitution"/>
+<RACINE element="AuthorizationOriginatingAgencyRequest"/>
+<RACINE element="AuthorizationControlAuthorityRequest"/>
+<RACINE element="AuthorizationOriginatingAgencyRequestReply"/>
+<RACINE element="AuthorizationControlAuthorityRequestReply"/>
+<RACINE element="Archive"/>
+</LANGAGE>
+<ENREGISTREMENT>
+<ENCODAGE>UTF8</ENCODAGE>
+</ENREGISTREMENT>
+
+<MENUS>
+<MENU nom="Eléments">
+<MENU_INSERTION nom="CharacterSetCode"/>
+<MENU_INSERTION nom="MIMEMediaType"/>
+<MENU_INSERTION nom="ISOTwoletterCountryCodeIdentifier"/>
+<MENU_INSERTION nom="ISO3AlphaCurrencyCode"/>
+<MENU_INSERTION nom="CharacterSetEncodingCode"/>
+<MENU_INSERTION nom="MeasurementUnitCommonCode"/>
+<MENU_INSERTION nom="AgencyIdentificationCode"/>
+<MENU_INSERTION nom="CommunicationMeansTypeCode"/>
+<MENU_INSERTION nom="AccessRestrictionCode"/>
+<MENU_INSERTION nom="AppraisalCode"/>
+<MENU_INSERTION nom="LevelDescriptionCode"/>
+<MENU_INSERTION nom="LanguageCode"/>
+<MENU_INSERTION nom="KeywordTypeCode"/>
+<MENU_INSERTION nom="DocumentTypeCode"/>
+<MENU_INSERTION nom="FileTypeCode"/>
+<MENU_INSERTION nom="AuthorisationReasonCode"/>
+<MENU_INSERTION nom="UnitIdentifierCode"/>
+<MENU_INSERTION nom="Organization"/>
+<MENU_INSERTION nom="BusinessType"/>
+<MENU_INSERTION nom="Description"/>
+<MENU_INSERTION nom="Identification"/>
+<MENU_INSERTION nom="LegalClassification"/>
+<MENU_INSERTION nom="Name"/>
+<MENU_INSERTION nom="Address"/>
+<MENU_INSERTION nom="Communication"/>
+<MENU_INSERTION nom="Contact"/>
+<MENU_INSERTION nom="BlockName"/>
+<MENU_INSERTION nom="BuildingName"/>
+<MENU_INSERTION nom="BuildingNumber"/>
+<MENU_INSERTION nom="CityName"/>
+<MENU_INSERTION nom="CitySub-DivisionName"/>
+<MENU_INSERTION nom="Country"/>
+<MENU_INSERTION nom="FloorIdentification"/>
+<MENU_INSERTION nom="Postcode"/>
+<MENU_INSERTION nom="PostOfficeBox"/>
+<MENU_INSERTION nom="RoomIdentification"/>
+<MENU_INSERTION nom="StreetName"/>
+<MENU_INSERTION nom="DepartmentName"/>
+<MENU_INSERTION nom="PersonName"/>
+<MENU_INSERTION nom="Responsibility"/>
+<MENU_INSERTION nom="Channel"/>
+<MENU_INSERTION nom="CompleteNumber"/>
+<MENU_INSERTION nom="URIID"/>
+<MENU_INSERTION nom="Archive"/>
+<MENU_INSERTION nom="ArchivalAgencyArchiveIdentifier"/>
+<MENU_INSERTION nom="ArchivalAgreement"/>
+<MENU_INSERTION nom="ArchivalProfile"/>
+<MENU_INSERTION nom="DescriptionLanguage"/>
+<MENU_INSERTION nom="OriginatingAgencyArchiveIdentifier"/>
+<MENU_INSERTION nom="ServiceLevel"/>
+<MENU_INSERTION nom="TransferringAgencyArchiveIdentifier"/>
+<MENU_INSERTION nom="ContentDescription"/>
+<MENU_INSERTION nom="AccessRestrictionRule"/>
+<MENU_INSERTION nom="AppraisalRule"/>
+<MENU_INSERTION nom="ArchiveObject"/>
+<MENU_INSERTION nom="Document"/>
+<MENU_INSERTION nom="DescriptionLevel"/>
+<MENU_INSERTION nom="FilePlanPosition"/>
+<MENU_INSERTION nom="Language"/>
+<MENU_INSERTION nom="LatestDate"/>
+<MENU_INSERTION nom="OldestDate"/>
+<MENU_INSERTION nom="OtherDescriptiveData"/>
+<MENU_INSERTION nom="CustodialHistory"/>
+<MENU_INSERTION nom="Keyword"/>
+<MENU_INSERTION nom="OriginatingAgency"/>
+<MENU_INSERTION nom="OtherMetadata"/>
+<MENU_INSERTION nom="RelatedObjectReference"/>
+<MENU_INSERTION nom="Repository"/>
+<MENU_INSERTION nom="ArchivalAgencyObjectIdentifier"/>
+<MENU_INSERTION nom="OriginatingAgencyObjectIdentifier"/>
+<MENU_INSERTION nom="TransferringAgencyObjectIdentifier"/>
+<MENU_INSERTION nom="Code"/>
+<MENU_INSERTION nom="Duration"/>
+<MENU_INSERTION nom="StartDate"/>
+<MENU_INSERTION nom="KeywordContent"/>
+<MENU_INSERTION nom="KeywordReference"/>
+<MENU_INSERTION nom="KeywordType"/>
+<MENU_INSERTION nom="ArchivalAgencyDocumentIdentifier"/>
+<MENU_INSERTION nom="Attachment"/>
+<MENU_INSERTION nom="Control"/>
+<MENU_INSERTION nom="Copy"/>
+<MENU_INSERTION nom="Creation"/>
+<MENU_INSERTION nom="Integrity"/>
+<MENU_INSERTION nom="Issue"/>
+<MENU_INSERTION nom="OriginatingAgencyDocumentIdentifier"/>
+<MENU_INSERTION nom="Purpose"/>
+<MENU_INSERTION nom="Receipt"/>
+<MENU_INSERTION nom="Response"/>
+<MENU_INSERTION nom="Size"/>
+<MENU_INSERTION nom="Status"/>
+<MENU_INSERTION nom="Submission"/>
+<MENU_INSERTION nom="TransferringAgencyDocumentIdentifier"/>
+<MENU_INSERTION nom="Type"/>
+<MENU_INSERTION nom="RelatedData"/>
+<MENU_INSERTION nom="Data"/>
+<MENU_INSERTION nom="Relation"/>
+<MENU_INSERTION nom="CustodialHistoryItem"/>
+<MENU_INSERTION nom="RelatedObjectIdentifier"/>
+<MENU_INSERTION nom="Signature"/>
+<MENU_INSERTION nom="SignatureValue"/>
+<MENU_INSERTION nom="SignedInfo"/>
+<MENU_INSERTION nom="CanonicalizationMethod"/>
+<MENU_INSERTION nom="SignatureMethod"/>
+<MENU_INSERTION nom="HMACOutputLength"/>
+<MENU_INSERTION nom="Reference"/>
+<MENU_INSERTION nom="Transforms"/>
+<MENU_INSERTION nom="Transform"/>
+<MENU_INSERTION nom="XPath"/>
+<MENU_INSERTION nom="DigestMethod"/>
+<MENU_INSERTION nom="DigestValue"/>
+<MENU_INSERTION nom="KeyInfo"/>
+<MENU_INSERTION nom="KeyName"/>
+<MENU_INSERTION nom="MgmtData"/>
+<MENU_INSERTION nom="KeyValue"/>
+<MENU_INSERTION nom="RetrievalMethod"/>
+<MENU_INSERTION nom="X509Data"/>
+<MENU_INSERTION nom="X509IssuerSerial"/>
+<MENU_INSERTION nom="X509SKI"/>
+<MENU_INSERTION nom="X509SubjectName"/>
+<MENU_INSERTION nom="X509Certificate"/>
+<MENU_INSERTION nom="X509CRL"/>
+<MENU_INSERTION nom="X509IssuerName"/>
+<MENU_INSERTION nom="X509SerialNumber"/>
+<MENU_INSERTION nom="PGPData"/>
+<MENU_INSERTION nom="PGPKeyID"/>
+<MENU_INSERTION nom="PGPKeyPacket"/>
+<MENU_INSERTION nom="SPKIData"/>
+<MENU_INSERTION nom="SPKISexp"/>
+<MENU_INSERTION nom="Object"/>
+<MENU_INSERTION nom="Manifest"/>
+<MENU_INSERTION nom="SignatureProperties"/>
+<MENU_INSERTION nom="SignatureProperty"/>
+<MENU_INSERTION nom="DSAKeyValue"/>
+<MENU_INSERTION nom="P"/>
+<MENU_INSERTION nom="Q"/>
+<MENU_INSERTION nom="G"/>
+<MENU_INSERTION nom="Y"/>
+<MENU_INSERTION nom="J"/>
+<MENU_INSERTION nom="Seed"/>
+<MENU_INSERTION nom="PgenCounter"/>
+<MENU_INSERTION nom="RSAKeyValue"/>
+<MENU_INSERTION nom="Modulus"/>
+<MENU_INSERTION nom="Exponent"/>
+<MENU_INSERTION nom="Any"/>
+<MENU_INSERTION nom="ObjectIdentifier"/>
+<MENU_INSERTION nom="Identifier"/>
+<MENU_INSERTION nom="DocumentationReferences"/>
+<MENU_INSERTION nom="DocumentationReference"/>
+<MENU_INSERTION nom="EncapsulatedPKIData"/>
+<MENU_INSERTION nom="Include"/>
+<MENU_INSERTION nom="ReferenceInfo"/>
+<MENU_INSERTION nom="EncapsulatedTimeStamp"/>
+<MENU_INSERTION nom="XMLTimeStamp"/>
+<MENU_INSERTION nom="XAdESTimeStamp"/>
+<MENU_INSERTION nom="OtherTimeStamp"/>
+<MENU_INSERTION nom="QualifyingProperties"/>
+<MENU_INSERTION nom="SignedProperties"/>
+<MENU_INSERTION nom="UnsignedProperties"/>
+<MENU_INSERTION nom="SignedSignatureProperties"/>
+<MENU_INSERTION nom="SignedDataObjectProperties"/>
+<MENU_INSERTION nom="UnsignedSignatureProperties"/>
+<MENU_INSERTION nom="UnsignedDataObjectProperties"/>
+<MENU_INSERTION nom="SigningTime"/>
+<MENU_INSERTION nom="SigningCertificate"/>
+<MENU_INSERTION nom="SignaturePolicyIdentifier"/>
+<MENU_INSERTION nom="SignatureProductionPlace"/>
+<MENU_INSERTION nom="SignerRole"/>
+<MENU_INSERTION nom="DataObjectFormat"/>
+<MENU_INSERTION nom="CommitmentTypeIndication"/>
+<MENU_INSERTION nom="AllDataObjectsTimeStamp"/>
+<MENU_INSERTION nom="IndividualDataObjectsTimeStamp"/>
+<MENU_INSERTION nom="CounterSignature"/>
+<MENU_INSERTION nom="SignatureTimeStamp"/>
+<MENU_INSERTION nom="CompleteCertificateRefs"/>
+<MENU_INSERTION nom="CompleteRevocationRefs"/>
+<MENU_INSERTION nom="AttributeCertificateRefs"/>
+<MENU_INSERTION nom="AttributeRevocationRefs"/>
+<MENU_INSERTION nom="SigAndRefsTimeStamp"/>
+<MENU_INSERTION nom="RefsOnlyTimeStamp"/>
+<MENU_INSERTION nom="CertificateValues"/>
+<MENU_INSERTION nom="RevocationValues"/>
+<MENU_INSERTION nom="AttrAuthoritiesCertValues"/>
+<MENU_INSERTION nom="AttributeRevocationValues"/>
+<MENU_INSERTION nom="ArchiveTimeStamp"/>
+<MENU_INSERTION nom="UnsignedDataObjectProperty"/>
+<MENU_INSERTION nom="QualifyingPropertiesReference"/>
+<MENU_INSERTION nom="Cert"/>
+<MENU_INSERTION nom="CertDigest"/>
+<MENU_INSERTION nom="IssuerSerial"/>
+<MENU_INSERTION nom="SignaturePolicyId"/>
+<MENU_INSERTION nom="SignaturePolicyImplied"/>
+<MENU_INSERTION nom="SigPolicyId"/>
+<MENU_INSERTION nom="SigPolicyHash"/>
+<MENU_INSERTION nom="SigPolicyQualifiers"/>
+<MENU_INSERTION nom="SigPolicyQualifier"/>
+<MENU_INSERTION nom="SPURI"/>
+<MENU_INSERTION nom="SPUserNotice"/>
+<MENU_INSERTION nom="NoticeRef"/>
+<MENU_INSERTION nom="ExplicitText"/>
+<MENU_INSERTION nom="NoticeNumbers"/>
+<MENU_INSERTION nom="int"/>
+<MENU_INSERTION nom="MimeType"/>
+<MENU_INSERTION nom="Encoding"/>
+<MENU_INSERTION nom="CommitmentTypeId"/>
+<MENU_INSERTION nom="ObjectReference"/>
+<MENU_INSERTION nom="AllSignedDataObjects"/>
+<MENU_INSERTION nom="CommitmentTypeQualifiers"/>
+<MENU_INSERTION nom="CommitmentTypeQualifier"/>
+<MENU_INSERTION nom="City"/>
+<MENU_INSERTION nom="StateOrProvince"/>
+<MENU_INSERTION nom="PostalCode"/>
+<MENU_INSERTION nom="CountryName"/>
+<MENU_INSERTION nom="ClaimedRoles"/>
+<MENU_INSERTION nom="CertifiedRoles"/>
+<MENU_INSERTION nom="ClaimedRole"/>
+<MENU_INSERTION nom="CertifiedRole"/>
+<MENU_INSERTION nom="CertRefs"/>
+<MENU_INSERTION nom="CRLRefs"/>
+<MENU_INSERTION nom="OCSPRefs"/>
+<MENU_INSERTION nom="OtherRefs"/>
+<MENU_INSERTION nom="CRLRef"/>
+<MENU_INSERTION nom="DigestAlgAndValue"/>
+<MENU_INSERTION nom="CRLIdentifier"/>
+<MENU_INSERTION nom="Issuer"/>
+<MENU_INSERTION nom="IssueTime"/>
+<MENU_INSERTION nom="Number"/>
+<MENU_INSERTION nom="OCSPRef"/>
+<MENU_INSERTION nom="OCSPIdentifier"/>
+<MENU_INSERTION nom="ByName"/>
+<MENU_INSERTION nom="ByKey"/>
+<MENU_INSERTION nom="ResponderID"/>
+<MENU_INSERTION nom="ProducedAt"/>
+<MENU_INSERTION nom="OtherRef"/>
+<MENU_INSERTION nom="EncapsulatedX509Certificate"/>
+<MENU_INSERTION nom="OtherCertificate"/>
+<MENU_INSERTION nom="CRLValues"/>
+<MENU_INSERTION nom="OCSPValues"/>
+<MENU_INSERTION nom="OtherValues"/>
+<MENU_INSERTION nom="EncapsulatedCRLValue"/>
+<MENU_INSERTION nom="EncapsulatedOCSPValue"/>
+<MENU_INSERTION nom="OtherValue"/>
+<MENU_INSERTION nom="TimeStampValidationData"/>
+<MENU_INSERTION nom="ArchiveTimeStampV2"/>
+<MENU_INSERTION nom="PKCS7Signature"/>
+<MENU_INSERTION nom="XMLSignature"/>
+<MENU_INSERTION nom="Acknowledgement"/>
+<MENU_INSERTION nom="Comment"/>
+<MENU_INSERTION nom="Date"/>
+<MENU_INSERTION nom="AcknowledgementIdentifier"/>
+<MENU_INSERTION nom="MessageReceivedIdentifier"/>
+<MENU_INSERTION nom="Receiver"/>
+<MENU_INSERTION nom="Sender"/>
+<MENU_INSERTION nom="NonRepudiation"/>
+<MENU_INSERTION nom="ArchiveDestructionNotification"/>
+<MENU_INSERTION nom="AuthorizationRequestReplyIdentifier"/>
+<MENU_INSERTION nom="DestructionNotificationIdentifier"/>
+<MENU_INSERTION nom="UnitIdentifier"/>
+<MENU_INSERTION nom="ArchivalAgency"/>
+<MENU_INSERTION nom="ArchiveTransfer"/>
+<MENU_INSERTION nom="RelatedTransferReference"/>
+<MENU_INSERTION nom="TransferIdentifier"/>
+<MENU_INSERTION nom="TransferRequestReplyIdentifier"/>
+<MENU_INSERTION nom="TransferringAgency"/>
+<MENU_INSERTION nom="ArchiveTransferReply"/>
+<MENU_INSERTION nom="GrantDate"/>
+<MENU_INSERTION nom="ReplyCode"/>
+<MENU_INSERTION nom="TransferReplyIdentifier"/>
+<MENU_INSERTION nom="ArchiveTransferRequest"/>
+<MENU_INSERTION nom="TransferDate"/>
+<MENU_INSERTION nom="TransferRequestIdentifier"/>
+<MENU_INSERTION nom="ArchiveTransferRequestReply"/>
+<MENU_INSERTION nom="ArchiveModificationNotification"/>
+<MENU_INSERTION nom="ModificationNotificationIdentifier"/>
+<MENU_INSERTION nom="ArchiveDeliveryRequest"/>
+<MENU_INSERTION nom="DeliveryRequestIdentifier"/>
+<MENU_INSERTION nom="Derogation"/>
+<MENU_INSERTION nom="Requester"/>
+<MENU_INSERTION nom="ArchiveDeliveryRequestReply"/>
+<MENU_INSERTION nom="DeliveryRequestReplyIdentifier"/>
+<MENU_INSERTION nom="ArchiveRestitutionRequest"/>
+<MENU_INSERTION nom="RestitutionRequestIdentifier"/>
+<MENU_INSERTION nom="ArchiveRestitutionRequestReply"/>
+<MENU_INSERTION nom="RestitutionRequestReplyIdentifier"/>
+<MENU_INSERTION nom="ArchiveRestitution"/>
+<MENU_INSERTION nom="RestitutionIdentifier"/>
+<MENU_INSERTION nom="AuthorizationOriginatingAgencyRequest"/>
+<MENU_INSERTION nom="AuthorizationOriginatingAgencyRequestIdentifier"/>
+<MENU_INSERTION nom="Request"/>
+<MENU_INSERTION nom="AuthorizationControlAuthorityRequest"/>
+<MENU_INSERTION nom="AuthorizationControlAuthorityRequestIdentifier"/>
+<MENU_INSERTION nom="ControlAuthority"/>
+<MENU_INSERTION nom="OriginatingAgencyAuthorization"/>
+<MENU_INSERTION nom="AuthorizationOriginatingAgencyRequestReply"/>
+<MENU_INSERTION nom="AuthorizationOriginatingAgencyRequestReplyIdentifier"/>
+<MENU_INSERTION nom="AuthorizationControlAuthorityRequestReply"/>
+<MENU_INSERTION nom="AuthorizationControlAuthorityRequestReplyIdentifier"/>
+<MENU_INSERTION nom="AuthorisationReason"/>
+<MENU_INSERTION nom="RequestDate"/>
+<MENU_INSERTION nom="Authorization"/>
+<MENU_INSERTION nom="Answer"/>
+</MENU>
+</MENUS>
+
+<AFFICHAGE_NOEUDS>
+<AFFICHAGE_ELEMENT type="division" element="CharacterSetCode"/>
+<AFFICHAGE_ELEMENT type="division" element="MIMEMediaType"/>
+<AFFICHAGE_ELEMENT type="division" element="ISOTwoletterCountryCodeIdentifier"/>
+<AFFICHAGE_ELEMENT type="division" element="ISO3AlphaCurrencyCode"/>
+<AFFICHAGE_ELEMENT type="division" element="CharacterSetEncodingCode"/>
+<AFFICHAGE_ELEMENT type="division" element="MeasurementUnitCommonCode"/>
+<AFFICHAGE_ELEMENT type="division" element="AgencyIdentificationCode"/>
+<AFFICHAGE_ELEMENT type="division" element="CommunicationMeansTypeCode"/>
+<AFFICHAGE_ELEMENT type="division" element="AccessRestrictionCode"/>
+<AFFICHAGE_ELEMENT type="division" element="AppraisalCode"/>
+<AFFICHAGE_ELEMENT type="division" element="LevelDescriptionCode"/>
+<AFFICHAGE_ELEMENT type="division" element="LanguageCode"/>
+<AFFICHAGE_ELEMENT type="division" element="KeywordTypeCode"/>
+<AFFICHAGE_ELEMENT type="division" element="DocumentTypeCode"/>
+<AFFICHAGE_ELEMENT type="division" element="FileTypeCode"/>
+<AFFICHAGE_ELEMENT type="division" element="AuthorisationReasonCode"/>
+<AFFICHAGE_ELEMENT type="division" element="UnitIdentifierCode"/>
+<AFFICHAGE_ELEMENT type="division" element="Organization"/>
+<AFFICHAGE_ELEMENT type="zone" element="BusinessType"/>
+<AFFICHAGE_ELEMENT type="zone" element="Description"/>
+<AFFICHAGE_ELEMENT type="zone" element="Identification"/>
+<AFFICHAGE_ELEMENT type="zone" element="LegalClassification"/>
+<AFFICHAGE_ELEMENT type="zone" element="Name"/>
+<AFFICHAGE_ELEMENT type="zone" element="Address"/>
+<AFFICHAGE_ELEMENT type="zone" element="Communication"/>
+<AFFICHAGE_ELEMENT type="zone" element="Contact"/>
+<AFFICHAGE_ELEMENT type="zone" element="BlockName"/>
+<AFFICHAGE_ELEMENT type="zone" element="BuildingName"/>
+<AFFICHAGE_ELEMENT type="zone" element="BuildingNumber"/>
+<AFFICHAGE_ELEMENT type="zone" element="CityName"/>
+<AFFICHAGE_ELEMENT type="zone" element="CitySub-DivisionName"/>
+<AFFICHAGE_ELEMENT type="zone" element="Country"/>
+<AFFICHAGE_ELEMENT type="zone" element="FloorIdentification"/>
+<AFFICHAGE_ELEMENT type="zone" element="Postcode"/>
+<AFFICHAGE_ELEMENT type="zone" element="PostOfficeBox"/>
+<AFFICHAGE_ELEMENT type="zone" element="RoomIdentification"/>
+<AFFICHAGE_ELEMENT type="zone" element="StreetName"/>
+<AFFICHAGE_ELEMENT type="zone" element="DepartmentName"/>
+<AFFICHAGE_ELEMENT type="zone" element="PersonName"/>
+<AFFICHAGE_ELEMENT type="zone" element="Responsibility"/>
+<AFFICHAGE_ELEMENT type="zone" element="Channel"/>
+<AFFICHAGE_ELEMENT type="zone" element="CompleteNumber"/>
+<AFFICHAGE_ELEMENT type="zone" element="URIID"/>
+<AFFICHAGE_ELEMENT type="division" element="Archive"/>
+<AFFICHAGE_ELEMENT type="zone" element="ArchivalAgencyArchiveIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="ArchivalAgreement"/>
+<AFFICHAGE_ELEMENT type="zone" element="ArchivalProfile"/>
+<AFFICHAGE_ELEMENT type="zone" element="DescriptionLanguage"/>
+<AFFICHAGE_ELEMENT type="zone" element="OriginatingAgencyArchiveIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="ServiceLevel"/>
+<AFFICHAGE_ELEMENT type="zone" element="TransferringAgencyArchiveIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="ContentDescription"/>
+<AFFICHAGE_ELEMENT type="zone" element="AccessRestrictionRule"/>
+<AFFICHAGE_ELEMENT type="zone" element="AppraisalRule"/>
+<AFFICHAGE_ELEMENT type="zone" element="ArchiveObject"/>
+<AFFICHAGE_ELEMENT type="zone" element="Document"/>
+<AFFICHAGE_ELEMENT type="zone" element="DescriptionLevel"/>
+<AFFICHAGE_ELEMENT type="zone" element="FilePlanPosition"/>
+<AFFICHAGE_ELEMENT type="zone" element="Language"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="LatestDate"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="OldestDate"/>
+<AFFICHAGE_ELEMENT type="zone" element="OtherDescriptiveData"/>
+<AFFICHAGE_ELEMENT type="zone" element="CustodialHistory"/>
+<AFFICHAGE_ELEMENT type="zone" element="Keyword"/>
+<AFFICHAGE_ELEMENT type="zone" element="OriginatingAgency"/>
+<AFFICHAGE_ELEMENT type="zone" element="OtherMetadata"/>
+<AFFICHAGE_ELEMENT type="zone" element="RelatedObjectReference"/>
+<AFFICHAGE_ELEMENT type="zone" element="Repository"/>
+<AFFICHAGE_ELEMENT type="zone" element="ArchivalAgencyObjectIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="OriginatingAgencyObjectIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="TransferringAgencyObjectIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="Code"/>
+<AFFICHAGE_ELEMENT type="zone" element="Duration"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="StartDate"/>
+<AFFICHAGE_ELEMENT type="zone" element="KeywordContent"/>
+<AFFICHAGE_ELEMENT type="zone" element="KeywordReference"/>
+<AFFICHAGE_ELEMENT type="zone" element="KeywordType"/>
+<AFFICHAGE_ELEMENT type="zone" element="ArchivalAgencyDocumentIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="Attachment"/>
+<AFFICHAGE_ELEMENT type="zone" element="Control"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="Copy"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="Creation"/>
+<AFFICHAGE_ELEMENT type="zone" element="Integrity"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="Issue"/>
+<AFFICHAGE_ELEMENT type="zone" element="OriginatingAgencyDocumentIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="Purpose"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="Receipt"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="Response"/>
+<AFFICHAGE_ELEMENT type="zone" element="Size"/>
+<AFFICHAGE_ELEMENT type="zone" element="Status"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="Submission"/>
+<AFFICHAGE_ELEMENT type="zone" element="TransferringAgencyDocumentIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="Type"/>
+<AFFICHAGE_ELEMENT type="zone" element="RelatedData"/>
+<AFFICHAGE_ELEMENT type="zone" element="Data"/>
+<AFFICHAGE_ELEMENT type="zone" element="Relation"/>
+<AFFICHAGE_ELEMENT type="zone" element="CustodialHistoryItem"/>
+<AFFICHAGE_ELEMENT type="zone" element="RelatedObjectIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="Signature"/>
+<AFFICHAGE_ELEMENT type="zone" element="SignatureValue"/>
+<AFFICHAGE_ELEMENT type="zone" element="SignedInfo"/>
+<AFFICHAGE_ELEMENT type="zone" element="CanonicalizationMethod"/>
+<AFFICHAGE_ELEMENT type="zone" element="SignatureMethod"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="HMACOutputLength"/>
+<AFFICHAGE_ELEMENT type="zone" element="Reference"/>
+<AFFICHAGE_ELEMENT type="zone" element="Transforms"/>
+<AFFICHAGE_ELEMENT type="zone" element="Transform"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="XPath"/>
+<AFFICHAGE_ELEMENT type="zone" element="DigestMethod"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="DigestValue"/>
+<AFFICHAGE_ELEMENT type="zone" element="KeyInfo"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="KeyName"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="MgmtData"/>
+<AFFICHAGE_ELEMENT type="zone" element="KeyValue"/>
+<AFFICHAGE_ELEMENT type="zone" element="RetrievalMethod"/>
+<AFFICHAGE_ELEMENT type="zone" element="X509Data"/>
+<AFFICHAGE_ELEMENT type="zone" element="X509IssuerSerial"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="X509SKI"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="X509SubjectName"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="X509Certificate"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="X509CRL"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="X509IssuerName"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="X509SerialNumber"/>
+<AFFICHAGE_ELEMENT type="zone" element="PGPData"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="PGPKeyID"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="PGPKeyPacket"/>
+<AFFICHAGE_ELEMENT type="zone" element="SPKIData"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="SPKISexp"/>
+<AFFICHAGE_ELEMENT type="zone" element="Object"/>
+<AFFICHAGE_ELEMENT type="division" element="Manifest"/>
+<AFFICHAGE_ELEMENT type="division" element="SignatureProperties"/>
+<AFFICHAGE_ELEMENT type="zone" element="SignatureProperty"/>
+<AFFICHAGE_ELEMENT type="zone" element="DSAKeyValue"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="P"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="Q"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="G"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="Y"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="J"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="Seed"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="PgenCounter"/>
+<AFFICHAGE_ELEMENT type="zone" element="RSAKeyValue"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="Modulus"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="Exponent"/>
+<AFFICHAGE_ELEMENT type="division" element="Any"/>
+<AFFICHAGE_ELEMENT type="division" element="ObjectIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="Identifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="DocumentationReferences"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="DocumentationReference"/>
+<AFFICHAGE_ELEMENT type="division" element="EncapsulatedPKIData"/>
+<AFFICHAGE_ELEMENT type="zone" element="Include"/>
+<AFFICHAGE_ELEMENT type="zone" element="ReferenceInfo"/>
+<AFFICHAGE_ELEMENT type="zone" element="EncapsulatedTimeStamp"/>
+<AFFICHAGE_ELEMENT type="zone" element="XMLTimeStamp"/>
+<AFFICHAGE_ELEMENT type="division" element="XAdESTimeStamp"/>
+<AFFICHAGE_ELEMENT type="division" element="OtherTimeStamp"/>
+<AFFICHAGE_ELEMENT type="division" element="QualifyingProperties"/>
+<AFFICHAGE_ELEMENT type="zone" element="SignedProperties"/>
+<AFFICHAGE_ELEMENT type="zone" element="UnsignedProperties"/>
+<AFFICHAGE_ELEMENT type="zone" element="SignedSignatureProperties"/>
+<AFFICHAGE_ELEMENT type="zone" element="SignedDataObjectProperties"/>
+<AFFICHAGE_ELEMENT type="zone" element="UnsignedSignatureProperties"/>
+<AFFICHAGE_ELEMENT type="zone" element="UnsignedDataObjectProperties"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="SigningTime"/>
+<AFFICHAGE_ELEMENT type="zone" element="SigningCertificate"/>
+<AFFICHAGE_ELEMENT type="zone" element="SignaturePolicyIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="SignatureProductionPlace"/>
+<AFFICHAGE_ELEMENT type="zone" element="SignerRole"/>
+<AFFICHAGE_ELEMENT type="zone" element="DataObjectFormat"/>
+<AFFICHAGE_ELEMENT type="zone" element="CommitmentTypeIndication"/>
+<AFFICHAGE_ELEMENT type="zone" element="AllDataObjectsTimeStamp"/>
+<AFFICHAGE_ELEMENT type="zone" element="IndividualDataObjectsTimeStamp"/>
+<AFFICHAGE_ELEMENT type="zone" element="CounterSignature"/>
+<AFFICHAGE_ELEMENT type="zone" element="SignatureTimeStamp"/>
+<AFFICHAGE_ELEMENT type="zone" element="CompleteCertificateRefs"/>
+<AFFICHAGE_ELEMENT type="zone" element="CompleteRevocationRefs"/>
+<AFFICHAGE_ELEMENT type="zone" element="AttributeCertificateRefs"/>
+<AFFICHAGE_ELEMENT type="zone" element="AttributeRevocationRefs"/>
+<AFFICHAGE_ELEMENT type="zone" element="SigAndRefsTimeStamp"/>
+<AFFICHAGE_ELEMENT type="zone" element="RefsOnlyTimeStamp"/>
+<AFFICHAGE_ELEMENT type="zone" element="CertificateValues"/>
+<AFFICHAGE_ELEMENT type="zone" element="RevocationValues"/>
+<AFFICHAGE_ELEMENT type="zone" element="AttrAuthoritiesCertValues"/>
+<AFFICHAGE_ELEMENT type="zone" element="AttributeRevocationValues"/>
+<AFFICHAGE_ELEMENT type="zone" element="ArchiveTimeStamp"/>
+<AFFICHAGE_ELEMENT type="zone" element="UnsignedDataObjectProperty"/>
+<AFFICHAGE_ELEMENT type="division" element="QualifyingPropertiesReference"/>
+<AFFICHAGE_ELEMENT type="zone" element="Cert"/>
+<AFFICHAGE_ELEMENT type="zone" element="CertDigest"/>
+<AFFICHAGE_ELEMENT type="zone" element="IssuerSerial"/>
+<AFFICHAGE_ELEMENT type="zone" element="SignaturePolicyId"/>
+<AFFICHAGE_ELEMENT type="vide" element="SignaturePolicyImplied"/>
+<AFFICHAGE_ELEMENT type="zone" element="SigPolicyId"/>
+<AFFICHAGE_ELEMENT type="zone" element="SigPolicyHash"/>
+<AFFICHAGE_ELEMENT type="zone" element="SigPolicyQualifiers"/>
+<AFFICHAGE_ELEMENT type="zone" element="SigPolicyQualifier"/>
+<AFFICHAGE_ELEMENT type="division" element="SPURI"/>
+<AFFICHAGE_ELEMENT type="division" element="SPUserNotice"/>
+<AFFICHAGE_ELEMENT type="zone" element="NoticeRef"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="ExplicitText"/>
+<AFFICHAGE_ELEMENT type="zone" element="NoticeNumbers"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="int"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="MimeType"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="Encoding"/>
+<AFFICHAGE_ELEMENT type="zone" element="CommitmentTypeId"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="ObjectReference"/>
+<AFFICHAGE_ELEMENT type="vide" element="AllSignedDataObjects"/>
+<AFFICHAGE_ELEMENT type="zone" element="CommitmentTypeQualifiers"/>
+<AFFICHAGE_ELEMENT type="zone" element="CommitmentTypeQualifier"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="City"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="StateOrProvince"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="PostalCode"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="CountryName"/>
+<AFFICHAGE_ELEMENT type="zone" element="ClaimedRoles"/>
+<AFFICHAGE_ELEMENT type="zone" element="CertifiedRoles"/>
+<AFFICHAGE_ELEMENT type="zone" element="ClaimedRole"/>
+<AFFICHAGE_ELEMENT type="zone" element="CertifiedRole"/>
+<AFFICHAGE_ELEMENT type="zone" element="CertRefs"/>
+<AFFICHAGE_ELEMENT type="zone" element="CRLRefs"/>
+<AFFICHAGE_ELEMENT type="zone" element="OCSPRefs"/>
+<AFFICHAGE_ELEMENT type="zone" element="OtherRefs"/>
+<AFFICHAGE_ELEMENT type="zone" element="CRLRef"/>
+<AFFICHAGE_ELEMENT type="zone" element="DigestAlgAndValue"/>
+<AFFICHAGE_ELEMENT type="zone" element="CRLIdentifier"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="Issuer"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="IssueTime"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="Number"/>
+<AFFICHAGE_ELEMENT type="zone" element="OCSPRef"/>
+<AFFICHAGE_ELEMENT type="zone" element="OCSPIdentifier"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="ByName"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="ByKey"/>
+<AFFICHAGE_ELEMENT type="zone" element="ResponderID"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="ProducedAt"/>
+<AFFICHAGE_ELEMENT type="zone" element="OtherRef"/>
+<AFFICHAGE_ELEMENT type="zone" element="EncapsulatedX509Certificate"/>
+<AFFICHAGE_ELEMENT type="zone" element="OtherCertificate"/>
+<AFFICHAGE_ELEMENT type="zone" element="CRLValues"/>
+<AFFICHAGE_ELEMENT type="zone" element="OCSPValues"/>
+<AFFICHAGE_ELEMENT type="zone" element="OtherValues"/>
+<AFFICHAGE_ELEMENT type="zone" element="EncapsulatedCRLValue"/>
+<AFFICHAGE_ELEMENT type="zone" element="EncapsulatedOCSPValue"/>
+<AFFICHAGE_ELEMENT type="zone" element="OtherValue"/>
+<AFFICHAGE_ELEMENT type="division" element="TimeStampValidationData"/>
+<AFFICHAGE_ELEMENT type="division" element="ArchiveTimeStampV2"/>
+<AFFICHAGE_ELEMENT type="zone" element="PKCS7Signature"/>
+<AFFICHAGE_ELEMENT type="zone" element="XMLSignature"/>
+<AFFICHAGE_ELEMENT type="division" element="Acknowledgement"/>
+<AFFICHAGE_ELEMENT type="zone" element="Comment"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="Date"/>
+<AFFICHAGE_ELEMENT type="zone" element="AcknowledgementIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="MessageReceivedIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="Receiver"/>
+<AFFICHAGE_ELEMENT type="zone" element="Sender"/>
+<AFFICHAGE_ELEMENT type="zone" element="NonRepudiation"/>
+<AFFICHAGE_ELEMENT type="division" element="ArchiveDestructionNotification"/>
+<AFFICHAGE_ELEMENT type="zone" element="AuthorizationRequestReplyIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="DestructionNotificationIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="UnitIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="ArchivalAgency"/>
+<AFFICHAGE_ELEMENT type="division" element="ArchiveTransfer"/>
+<AFFICHAGE_ELEMENT type="zone" element="RelatedTransferReference"/>
+<AFFICHAGE_ELEMENT type="zone" element="TransferIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="TransferRequestReplyIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="TransferringAgency"/>
+<AFFICHAGE_ELEMENT type="division" element="ArchiveTransferReply"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="GrantDate"/>
+<AFFICHAGE_ELEMENT type="zone" element="ReplyCode"/>
+<AFFICHAGE_ELEMENT type="zone" element="TransferReplyIdentifier"/>
+<AFFICHAGE_ELEMENT type="division" element="ArchiveTransferRequest"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="TransferDate"/>
+<AFFICHAGE_ELEMENT type="zone" element="TransferRequestIdentifier"/>
+<AFFICHAGE_ELEMENT type="division" element="ArchiveTransferRequestReply"/>
+<AFFICHAGE_ELEMENT type="division" element="ArchiveModificationNotification"/>
+<AFFICHAGE_ELEMENT type="zone" element="ModificationNotificationIdentifier"/>
+<AFFICHAGE_ELEMENT type="division" element="ArchiveDeliveryRequest"/>
+<AFFICHAGE_ELEMENT type="zone" element="DeliveryRequestIdentifier"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="Derogation"/>
+<AFFICHAGE_ELEMENT type="zone" element="Requester"/>
+<AFFICHAGE_ELEMENT type="division" element="ArchiveDeliveryRequestReply"/>
+<AFFICHAGE_ELEMENT type="zone" element="DeliveryRequestReplyIdentifier"/>
+<AFFICHAGE_ELEMENT type="division" element="ArchiveRestitutionRequest"/>
+<AFFICHAGE_ELEMENT type="zone" element="RestitutionRequestIdentifier"/>
+<AFFICHAGE_ELEMENT type="division" element="ArchiveRestitutionRequestReply"/>
+<AFFICHAGE_ELEMENT type="zone" element="RestitutionRequestReplyIdentifier"/>
+<AFFICHAGE_ELEMENT type="division" element="ArchiveRestitution"/>
+<AFFICHAGE_ELEMENT type="zone" element="RestitutionIdentifier"/>
+<AFFICHAGE_ELEMENT type="division" element="AuthorizationOriginatingAgencyRequest"/>
+<AFFICHAGE_ELEMENT type="zone" element="AuthorizationOriginatingAgencyRequestIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="Request"/>
+<AFFICHAGE_ELEMENT type="division" element="AuthorizationControlAuthorityRequest"/>
+<AFFICHAGE_ELEMENT type="zone" element="AuthorizationControlAuthorityRequestIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="ControlAuthority"/>
+<AFFICHAGE_ELEMENT type="zone" element="OriginatingAgencyAuthorization"/>
+<AFFICHAGE_ELEMENT type="division" element="AuthorizationOriginatingAgencyRequestReply"/>
+<AFFICHAGE_ELEMENT type="zone" element="AuthorizationOriginatingAgencyRequestReplyIdentifier"/>
+<AFFICHAGE_ELEMENT type="division" element="AuthorizationControlAuthorityRequestReply"/>
+<AFFICHAGE_ELEMENT type="zone" element="AuthorizationControlAuthorityRequestReplyIdentifier"/>
+<AFFICHAGE_ELEMENT type="zone" element="AuthorisationReason"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="RequestDate"/>
+<AFFICHAGE_ELEMENT type="division" element="Authorization"/>
+<AFFICHAGE_ELEMENT type="typesimple" element="Answer"/>
+</AFFICHAGE_NOEUDS>
+
+<STRINGS>
+<DESCRIPTION_CONFIG>???</DESCRIPTION_CONFIG>
+<STRINGS_ELEMENT element="CharacterSetCode">
+<TITRE>CharacterSetCode</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="MIMEMediaType">
+<TITRE>MIMEMediaType</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ISOTwoletterCountryCodeIdentifier">
+<TITRE>ISOTwoletterCountryCodeIdentifier</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ISO3AlphaCurrencyCode">
+<TITRE>ISO3AlphaCurrencyCode</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CharacterSetEncodingCode">
+<TITRE>CharacterSetEncodingCode</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="MeasurementUnitCommonCode">
+<TITRE>MeasurementUnitCommonCode</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AgencyIdentificationCode">
+<TITRE>AgencyIdentificationCode</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CommunicationMeansTypeCode">
+<TITRE>CommunicationMeansTypeCode</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AccessRestrictionCode">
+<TITRE>AccessRestrictionCode</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AppraisalCode">
+<TITRE>AppraisalCode</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="LevelDescriptionCode">
+<TITRE>LevelDescriptionCode</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="LanguageCode">
+<TITRE>LanguageCode</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="KeywordTypeCode">
+<TITRE>KeywordTypeCode</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="DocumentTypeCode">
+<TITRE>DocumentTypeCode</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="FileTypeCode">
+<TITRE>FileTypeCode</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AuthorisationReasonCode">
+<TITRE>AuthorisationReasonCode</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="UnitIdentifierCode">
+<TITRE>UnitIdentifierCode</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Organization">
+<TITRE>Organization</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="BusinessType">
+<TITRE>BusinessType</TITRE>
+<DOCUMENTATION>
+						OCAAES000001-01
+						BBIE
+						Organization.BusinessType
+						1.0
+						0..1
+						Code définissant la nature de l'activité de l'organisation. Répertoire SIRENE: Code APE (APEN ou APET suivant le niveau)
+						Organization
+						BusinessType
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Description">
+<TITRE>Description</TITRE>
+<DOCUMENTATION>
+						OCAAES000001-02
+						BBIE
+						Organization.Description
+						1.0
+						0..1
+						Description textuelle de l'organisation
+						Organization
+						Description
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Identification">
+<TITRE>Identification</TITRE>
+<DOCUMENTATION>
+						OCAAES000001-04
+						BBIE
+						Organization.Identification
+						1.0
+						1..1
+						Identifiant unique de l'organisation. 
+							Par exemple dans le Répertoire SIRENE: SIREN ou SIRET suivant le niveau.
+						Organization
+						Identification
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="LegalClassification">
+<TITRE>LegalClassification</TITRE>
+<DOCUMENTATION>
+						OCAAES000001-05
+						BBIE
+						Organization.LegalClassification
+						1.0
+						0..1
+						Code définissant la catégorie juridique de l'organisation. 
+							Répertoire SIRENE: personne morale ou pour une entreprise individuelle, 
+							la catégorie professionnelle.
+						Organization
+						LegalClassification
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Name">
+<TITRE>Name</TITRE>
+<DOCUMENTATION>
+						OCAAES000001-06
+						BBIE
+						Organization.Name
+						1.0
+						0..1
+						Dénomination ou enseigne: Nom sous lequel l'organisation exerce son activité.
+							Ex. Service d'état civil. Répertoire SIRENE.
+						Organization
+						Name
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Address">
+<TITRE>Address</TITRE>
+<DOCUMENTATION>
+						OCAAES000001-09
+						ASBIE
+						Organization.Address
+						1.0
+						0..n
+						Adresses de l'organisation.
+						Organization
+						Address
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Communication">
+<TITRE>Communication</TITRE>
+<DOCUMENTATION>
+						OCAAES000001-10
+						ASBIE
+						Organization.Communication
+						1.0
+						0..n
+						Moyen de communication de l'organisation.
+						Organization
+						Communication
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Contact">
+<TITRE>Contact</TITRE>
+<DOCUMENTATION>
+						OCAAES000001-08
+						ASBIE
+						Organization.Contact
+						1.0
+						0..n
+						Contacts identifiés de l'organisation
+						Organization
+						Contact
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="BlockName">
+<TITRE>BlockName</TITRE>
+<DOCUMENTATION>
+						OCAAES000002-01
+						BBIE
+						Address.BlockName
+						1.0
+						0..1
+						Nom du corps de bâtiment.
+						Address
+						BlockName
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="BuildingName">
+<TITRE>BuildingName</TITRE>
+<DOCUMENTATION>
+						OCAAES000002-02
+						BBIE
+						Address.BuildingName
+						1.0
+						0..1
+						Nom du bâtiment.
+						Address
+						BuildingName
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="BuildingNumber">
+<TITRE>BuildingNumber</TITRE>
+<DOCUMENTATION>
+						OCAAES000002-03
+						BBIE
+						Address.BuildingNumber
+						1.0
+						0..1
+						Numéro, exprimé en texte, d'un bâtiment sur la voie à cette adresse.
+						Address
+						BuildingNumber
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CityName">
+<TITRE>CityName</TITRE>
+<DOCUMENTATION>
+						OCAAES000002-04
+						BBIE
+						Address.CityName
+						1.0
+						0..1
+						Localité. Eléments de la norme Afnor XP Z 10-011: Zone d'habitation : il s'agit en général de la commune d'implantation du destinataire. Elle est identifiée par son libellé INSEE sauf dans quelques cas ou le libellé postal diffère du libellé INSEE, généralement pour lever les ambiguïtés. Par exception, la localité de destination est dans certains cas un lieu dit si celui-ci est le siège d'un bureau distributeur.Exemple : Pyla-sur-Mer en Gironde (CP : 33115, commune 33529 la Teste de Buch).
+						Address
+						CityName
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CitySub-DivisionName">
+<TITRE>CitySub-DivisionName</TITRE>
+<DOCUMENTATION>
+						OCAAES000002-05
+						BBIE
+						Address.CitySub-DivisionName
+						1.0
+						0..1
+						Nom d'une sous division de la localité où se trouve l'adresse, par exemple un arrondissement ou un quartier.
+						Address
+						CitySub-DivisionName
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Country">
+<TITRE>Country</TITRE>
+<DOCUMENTATION>
+						OCAAES000002-06
+						BBIE
+						Address.Country
+						1.0
+						0..1
+						Identifiant unique du pays de l'adresse  (Reference ISO 3166 and UN/ECE Rec 3).
+						Address
+						Country
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="FloorIdentification">
+<TITRE>FloorIdentification</TITRE>
+<DOCUMENTATION>
+						OCAAES000002-08
+						BBIE
+						Address.FloorIdentification
+						1.0
+						0..1
+						Etage ou niveau.
+						Address
+						FloorIdentification
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Postcode">
+<TITRE>Postcode</TITRE>
+<DOCUMENTATION>
+						OCAAES000002-18
+						BBIE
+						Address.Postcode
+						1.0
+						0..1
+						Code postal.
+						Address
+						Postcode
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="PostOfficeBox">
+<TITRE>PostOfficeBox</TITRE>
+<DOCUMENTATION>
+						OCAAES000002-19
+						BBIE
+						Address.PostOfficeBox
+						1.0
+						0..1
+						Boite postale.
+						Address
+						PostOfficeBox
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="RoomIdentification">
+<TITRE>RoomIdentification</TITRE>
+<DOCUMENTATION>
+						OCAAES000002-20
+						BBIE
+						Address.RoomIdentification
+						1.0
+						0..1
+						Identifiant de la salle ou de la pièce.
+						Address
+						RoomIdentification
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="StreetName">
+<TITRE>StreetName</TITRE>
+<DOCUMENTATION>
+						OCAAES000002-21
+						BBIE
+						Address.StreetName
+						1.0
+						0..1
+						Nom de la voie.
+						Address
+						StreetName
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="DepartmentName">
+<TITRE>DepartmentName</TITRE>
+<DOCUMENTATION>
+						OCAAES000003-01
+						BBIE
+						Contact.DepartmentName
+						1.0
+						0..1
+						Service auquel appartient le contact dans une organisation (exemple: Support).
+						Contact
+						DepartmentName
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="PersonName">
+<TITRE>PersonName</TITRE>
+<DOCUMENTATION>
+						OCAAES000003-04
+						BBIE
+						Contact.PersonName
+						1.0
+						0..1
+						Nom de la personne ou du service à contacter.
+						Contact
+						PersonName
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Responsibility">
+<TITRE>Responsibility</TITRE>
+<DOCUMENTATION>
+						OCAAES000003-05
+						BBIE
+						Contact.Responsibility
+						1.0
+						0..1
+						Description textuelle des responsabilité(s) générales ou spécifiques du contact.
+						Contact
+						Responsibility
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Channel">
+<TITRE>Channel</TITRE>
+<DOCUMENTATION>
+						OCAAES000004-02
+						BBIE
+						Communication.Channel
+						1.0
+						0..1
+						Un code spécifiant le canal ou la manière dont s'établit la communication (téléphone, e-mail, etc.).
+						Communication
+						Channel
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CompleteNumber">
+<TITRE>CompleteNumber</TITRE>
+<DOCUMENTATION>
+						OCAAES000004-03
+						BBIE
+						Communication.CompleteNumber
+						1.0
+						0..1
+						Un numéro à composer complet.
+						Communication
+						CompleteNumber
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="URIID">
+<TITRE>URIID</TITRE>
+<DOCUMENTATION>
+						OCAAES000004-01
+						BBIE
+						Communication.URI
+						1.0
+						0..1
+						Un identifiant URI (Uniform Resource Identifier), terme générique pour tous les types de noms et d'adresses qui réfèrent des objets sur le Word Wide Web (e. e-mail, URL, etc.).
+						Communication
+						URI
+					</DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Archive">
+<TITRE>Archive</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ArchivalAgencyArchiveIdentifier">
+<TITRE>ArchivalAgencyArchiveIdentifier</TITRE>
+<DOCUMENTATION>
+                                                AAES000001-01
+                                                BBIE
+                                                Archive.ArchivalAgencyArchiveIdentifier
+                                                1.0
+                                                0..1
+                                                Identifiant attribué à l'&lt;Archive&gt; par le service d'archives.
+                                                Archive
+                                                ArchivalAgencyArchiveIdentifier
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ArchivalAgreement">
+<TITRE>ArchivalAgreement</TITRE>
+<DOCUMENTATION>
+                                                AAES000001-02
+                                                BBIE
+                                                Archive.ArchivalAgreement
+                                                1.0
+                                                0..1
+                                                Convention de services : porte sur les conditions qui pourront faire l'objet d'un contrôle
+                                                        par le SAE pour une catégorie d'archives (périodicité de la transaction, volumétries, 
+                                                        formats des données...).
+                                                Archive
+                                                ArchivalAgreement
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ArchivalProfile">
+<TITRE>ArchivalProfile</TITRE>
+<DOCUMENTATION>
+                                                AAES000001-03
+                                                BBIE
+                                                Archive.ArchivalProfile
+                                                1.0
+                                                0..1
+                                                Modèle de description/profil d'archivage pour une catégorie d'archives donnée.
+                                                Archive
+                                                ArchivalProfile
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="DescriptionLanguage">
+<TITRE>DescriptionLanguage</TITRE>
+<DOCUMENTATION>
+                                                AAES000001-04
+                                                BBIE
+                                                Archive.DescriptionLanguage
+                                                1.0
+                                                1..n
+                                                Langue utilisée pour les informations de représentation et de pérennisation.
+                                                Archive
+                                                DescriptionLanguage
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="OriginatingAgencyArchiveIdentifier">
+<TITRE>OriginatingAgencyArchiveIdentifier</TITRE>
+<DOCUMENTATION>
+                                                AAES000001-06
+                                                BBIE
+                                                Archive.OriginatingAgencyArchiveIdentifier
+                                                1.0
+                                                0..1
+                                                Identifiant attribué à l'&lt;Archive&gt; par le service producteur.
+                                                Archive
+                                                OriginatingAgencyArchiveIdentifier
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ServiceLevel">
+<TITRE>ServiceLevel</TITRE>
+<DOCUMENTATION>
+                                                AAES000001-07
+                                                BBIE
+                                                Archive.ServiceLevel
+                                                1.0
+                                                0..n
+                                                Niveau de service demandé (disponibilité, sécurité...).
+                                                Archive
+                                                ServiceLevel
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="TransferringAgencyArchiveIdentifier">
+<TITRE>TransferringAgencyArchiveIdentifier</TITRE>
+<DOCUMENTATION>
+                                                AAES000001-08
+                                                BBIE
+                                                Archive.TransferringAgencyArchiveIdentifier
+                                                1.0
+                                                0..1
+                                                Identifiant attribué à l'&lt;Archive&gt; par le service versant.
+                                                Archive
+                                                TransferringAgencyArchiveIdentifier
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ContentDescription">
+<TITRE>ContentDescription</TITRE>
+<DOCUMENTATION>
+                                                AAES000001-11
+                                                ASBIE
+                                                Archive.ContentDescription
+                                                1.0
+                                                1..1
+                                                Informations de pérennisation de l'&lt;Archive&gt;.
+                                                Archive
+                                                ContentDescription
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AccessRestrictionRule">
+<TITRE>AccessRestrictionRule</TITRE>
+<DOCUMENTATION>
+                                                AAES000001-09
+                                                ASBIE
+                                                Archive.AccessRestrictionRule
+                                                1.0
+                                                1..1
+                                                Règle à appliquer en matière d'accès aux objets-données (communicabilité).
+                                                Archive
+                                                AccessRestrictionRule
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AppraisalRule">
+<TITRE>AppraisalRule</TITRE>
+<DOCUMENTATION>
+                                                AAES000001-10
+                                                ASBIE
+                                                Archive.AppraisalRule
+                                                1.0
+                                                0..1
+                                                Règle relative au cycle de vie du contenu d'information.
+                                                Archive
+                                                AppraisalRule
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ArchiveObject">
+<TITRE>ArchiveObject</TITRE>
+<DOCUMENTATION>
+                                                AAES000001-12
+                                                ASBIE
+                                                Archive.ArchiveObject
+                                                1.0
+                                                0..n
+                                                Objet correspondant à une subdivision de l'&lt;Archive&gt;.
+                                                Archive
+                                                ArchiveObject
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Document">
+<TITRE>Document</TITRE>
+<DOCUMENTATION>
+                                                AAES000001-13
+                                                ASBIE
+                                                Archive.Document
+                                                1.0
+                                                0..n
+                                                Objet correspondant à une subdivision de l'&lt;Archive&gt; ne pouvant pas lui-même 
+                                                        être subdivisé et comportant obligatoirement un objet-données (fichier), ses informations de représentation
+                                                        et ses informations de pérennisation.
+                                                Archive
+                                                Document
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="DescriptionLevel">
+<TITRE>DescriptionLevel</TITRE>
+<DOCUMENTATION>
+                                                AAES000002-02
+                                                BBIE
+                                                ContentDescription.DescriptionLevel
+                                                1.0
+                                                1..1
+                                                Niveau de description (Isad(g)) indiquant si l'objet 
+                                                        &lt;Archive&gt; ou &lt;ArchiveObject&gt;. décrit est un groupe de documents, 
+                                                        un sous-groupe de documents, un dossier, ou une pièce.
+                                                ContentDescription
+                                                DescriptionLevel
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="FilePlanPosition">
+<TITRE>FilePlanPosition</TITRE>
+<DOCUMENTATION>
+                                                AAES000002-03
+                                                BBIE
+                                                ContentDescription.FilePlanPosition
+                                                1.0
+                                                0..n
+                                                Position du contenu d'information dans le plan de classement du producteur.
+                                                ContentDescription
+                                                FilePlanPosition
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Language">
+<TITRE>Language</TITRE>
+<DOCUMENTATION>
+                                                AAES000002-04
+                                                BBIE
+                                                ContentDescription.Language
+                                                1.0
+                                                1..n
+                                                Langue du contenu des objets-données.
+                                                ContentDescription
+                                                Language
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="LatestDate">
+<TITRE>LatestDate</TITRE>
+<DOCUMENTATION>
+                                                AAES000002-05
+                                                BBIE
+                                                ContentDescription.LatestDate
+                                                1.0
+                                                0..1
+                                                Date de production la plus récente des objets-données.
+                                                ContentDescription
+                                                LatestDate
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="OldestDate">
+<TITRE>OldestDate</TITRE>
+<DOCUMENTATION>
+                                                AAES000002-06
+                                                BBIE
+                                                ContentDescription.OldestDate
+                                                1.0
+                                                0..1
+                                                Date de production la plus ancienne des objets-données.
+                                                ContentDescription
+                                                OldestDate
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="OtherDescriptiveData">
+<TITRE>OtherDescriptiveData</TITRE>
+<DOCUMENTATION>
+                                                AAES000002-07
+                                                BBIE
+                                                ContentDescription.OtherDescriptiveData
+                                                1.0
+                                                0..1
+                                                Autres informations sur l'objet-données.
+                                                ContentDescription
+                                                OtherDescriptiveData
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CustodialHistory">
+<TITRE>CustodialHistory</TITRE>
+<DOCUMENTATION>
+                                                AAES000002-11
+                                                ASBIE
+                                                ContentDescription.CustodialHistory
+                                                1.0
+                                                0..1
+                                                Énumère les changements successifs de propriété, de responsabilité et de conservation 
+                                                        des objets-données avant leur entrée dans le lieu de conservation. On peut indiquer notamment 
+                                                        comment s'est effectué le passage de l'application d'origine au fichier archivable..
+                                                ContentDescription
+                                                CustodialHistory
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Keyword">
+<TITRE>Keyword</TITRE>
+<DOCUMENTATION>
+                                                AAES000002-08
+                                                ASBIE
+                                                ContentDescription.Keyword
+                                                1.0
+                                                0..n
+                                                Mots-clef
+                                                ContentDescription
+                                                Keyword
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="OriginatingAgency">
+<TITRE>OriginatingAgency</TITRE>
+<DOCUMENTATION>
+                                                AAES000002-12
+                                                ASBIE
+                                                ContentDescription.OriginatingAgency
+                                                1.0
+                                                0..n
+                                                Service producteur ("Personne physique ou morale, publique ou privée, 
+                                                        qui a produit, reçu et conservé des archives  dans l'exercice de son activité", 
+                                                        Dictionnaire de terminologie archivistique, direction des archives de France, 2002).
+                                                ContentDescription
+                                                OriginatingAgency
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="OtherMetadata">
+<TITRE>OtherMetadata</TITRE>
+<DOCUMENTATION>
+                                                AAES000002-13
+                                                ASBIE
+                                                ContentDescription.OtherMetadata
+                                                1.0
+                                                0..n
+                                                Autres informations sur l'objet-données.
+                                                ContentDescription
+                                                OtherMetadata
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="RelatedObjectReference">
+<TITRE>RelatedObjectReference</TITRE>
+<DOCUMENTATION>
+                                                AAES000002-09
+                                                ASBIE
+                                                ContentDescription.RelatedObjectReference
+                                                1.0
+                                                0..n
+                                                Référence à un objet ne faisant pas partie du présent paquet d'information.
+                                                ContentDescription
+                                                RelatedObjectReference
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Repository">
+<TITRE>Repository</TITRE>
+<DOCUMENTATION>
+                                                AAES000002-14
+                                                ASBIE
+                                                ContentDescription.Repository
+                                                1.0
+                                                0..1
+                                                "Institution ou organisme responsable de l&#8217;accès intellectuel aux
+                                                        unités documentaires" (dictionnaire des balises de l'EAD, version 2002).
+                                                ContentDescription
+                                                Repository
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ArchivalAgencyObjectIdentifier">
+<TITRE>ArchivalAgencyObjectIdentifier</TITRE>
+<DOCUMENTATION>
+                                                AAES000003-01
+                                                BBIE
+                                                ArchiveObject.ArchivalAgencyObjectIdentifier
+                                                1.0
+                                                0..1
+                                                Identifiant attribué à l'&lt;ArchiveObject&gt; par le service d'archives.
+                                                ArchiveObject
+                                                ArchivalAgencyObjectIdentifier
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="OriginatingAgencyObjectIdentifier">
+<TITRE>OriginatingAgencyObjectIdentifier</TITRE>
+<DOCUMENTATION>
+                                                AAES000003-03
+                                                BBIE
+                                                ArchiveObject.OriginatingAgencyObjectIdentifier
+                                                1.0
+                                                0..1
+                                                Identifiant attribué à l'&lt;ArchiveObject&gt; par le service producteur.
+                                                ArchiveObject
+                                                OriginatingAgencyObjectIdentifier
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="TransferringAgencyObjectIdentifier">
+<TITRE>TransferringAgencyObjectIdentifier</TITRE>
+<DOCUMENTATION>
+                                                AAES000003-04
+                                                BBIE
+                                                ArchiveObject.TransferringAgencyObjectIdentifier
+                                                1.0
+                                                0..1
+                                                Identifiant attribué à l'&lt;ArchiveObject&gt; par le service versant.
+                                                ArchiveObject
+                                                TransferringAgencyObjectIdentifier
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Code">
+<TITRE>Code</TITRE>
+<DOCUMENTATION>
+                                                AAES000004-01
+                                                BBIE
+                                                AppraisalRule.Code
+                                                1.0
+                                                1..1
+                                                Code correspondant au sort final à appliquer.
+                                                AppraisalRule
+                                                Code
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Duration">
+<TITRE>Duration</TITRE>
+<DOCUMENTATION>
+                                                AAES000004-02
+                                                BBIE
+                                                AppraisalRule.Duration
+                                                1.0
+                                                1..1
+                                                Durée d'utilité administrative.
+                                                AppraisalRule
+                                                Duration
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="StartDate">
+<TITRE>StartDate</TITRE>
+<DOCUMENTATION>
+                                                AAES000004-03
+                                                BBIE
+                                                AppraisalRule.StartDate
+                                                1.0
+                                                1..1
+                                                Date de départ du calcul de la règle.
+                                                AppraisalRule
+                                                StartDate
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="KeywordContent">
+<TITRE>KeywordContent</TITRE>
+<DOCUMENTATION>
+                                                AAES000005-01
+                                                BBIE
+                                                Keyword.KeywordContent
+                                                1.0
+                                                1..1
+                                                Valeur du mot-clé.
+                                                Keyword
+                                                KeywordContent
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="KeywordReference">
+<TITRE>KeywordReference</TITRE>
+<DOCUMENTATION>
+                                                AAES000005-02
+                                                BBIE
+                                                Keyword.KeywordReference
+                                                1.0
+                                                0..1
+                                                Identifiant du mot clé dans un référentiel, par exemple
+                                                  pour un lieu son Code Officiel Géographique selon l'INSEE.
+                                                Keyword
+                                                KeywordReference
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="KeywordType">
+<TITRE>KeywordType</TITRE>
+<DOCUMENTATION>
+                                                AAES000005-03
+                                                BBIE
+                                                Keyword.KeywordType
+                                                1.0
+                                                0..1
+                                                Type de mot clé.
+                                                Keyword
+                                                KeywordType
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ArchivalAgencyDocumentIdentifier">
+<TITRE>ArchivalAgencyDocumentIdentifier</TITRE>
+<DOCUMENTATION>
+                                                AAES000006-01
+                                                BBIE
+                                                Document.ArchivalAgencyDocumentIdentifier
+                                                1.0
+                                                0..1
+                                                Identifiant attribué au &lt;Document&gt; par le service d'archives.
+                                                Document
+                                                ArchivalAgencyDocumentIdentifier
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Attachment">
+<TITRE>Attachment</TITRE>
+<DOCUMENTATION>
+                                                AAES000006-02
+                                                BBIE
+                                                Document.Attachment
+                                                1.0
+                                                1..1
+                                                Objet-données (contenu binaire ou fichier joint).
+                                                Document
+                                                Attachment
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Control">
+<TITRE>Control</TITRE>
+<DOCUMENTATION>
+                                                AAES000006-03
+                                                BBIE
+                                                Document.Control
+                                                1.0
+                                                0..n
+                                                Indique le code correspondant à un
+                                                        contrôle à effectuer sur l'objet-données.
+                                                Document
+                                                Control
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Copy">
+<TITRE>Copy</TITRE>
+<DOCUMENTATION>
+                                                AAES000006-04
+                                                BBIE
+                                                Document.Copy
+                                                1.0
+                                                0..1
+                                                Indique si l'objet-données est un original (valeur "false") ou une copie (valeur "true").
+                                                Document
+                                                Copy
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Creation">
+<TITRE>Creation</TITRE>
+<DOCUMENTATION>
+                                                AAES000006-05
+                                                BBIE
+                                                Document.Creation
+                                                1.0
+                                                0..1
+                                                Date de création de l'objet-données.
+                                                Document
+                                                Creation
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Integrity">
+<TITRE>Integrity</TITRE>
+<DOCUMENTATION>
+                                                AAES000006-07
+                                                BBIE
+                                                Document.Integrity
+                                                1.0
+                                                0..1
+                                                Empreinte de l'objet-données.
+                                                Document
+                                                Integrity
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Issue">
+<TITRE>Issue</TITRE>
+<DOCUMENTATION>
+                                                AAES000006-08
+                                                BBIE
+                                                Document.Issue
+                                                1.0
+                                                0..1
+                                                Date d'émission de l'objet-données.
+                                                Document
+                                                Issue
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="OriginatingAgencyDocumentIdentifier">
+<TITRE>OriginatingAgencyDocumentIdentifier</TITRE>
+<DOCUMENTATION>
+                                                AAES000006-10
+                                                BBIE
+                                                Document.OriginatingAgencyDocumentIdentifier
+                                                1.0
+                                                0..1
+                                                        Identifiant attribué au &lt;Document&gt; par le service producteur.
+                                                Document
+                                                OriginatingAgencyDocumentIdentifier
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Purpose">
+<TITRE>Purpose</TITRE>
+<DOCUMENTATION>
+                                                AAES000006-11
+                                                BBIE
+                                                Document.Purpose
+                                                1.0
+                                                0..1
+                                                Objet ou objectif de l'objet-données.
+                                                Document
+                                                Purpose
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Receipt">
+<TITRE>Receipt</TITRE>
+<DOCUMENTATION>
+                                                AAES000006-12
+                                                BBIE
+                                                Document.Receipt
+                                                1.0
+                                                0..1
+                                                Date de réception de l'objet-données.
+                                                Document
+                                                Receipt
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Response">
+<TITRE>Response</TITRE>
+<DOCUMENTATION>
+                                                AAES000006-13
+                                                BBIE
+                                                Document.Response
+                                                1.0
+                                                0..1
+                                                Date de réponse de l'objet-données.
+                                                Document
+                                                Response
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Size">
+<TITRE>Size</TITRE>
+<DOCUMENTATION>
+                                                AAES000006-14
+                                                BBIE
+                                                Document.Size
+                                                1.0
+                                                0..1
+                                                Taille du contenu de l'objet-données.
+                                                Document
+                                                Size
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Status">
+<TITRE>Status</TITRE>
+<DOCUMENTATION>
+                                                AAES000006-15
+                                                BBIE
+                                                Document.Status
+                                                1.0
+                                                0..1
+                                                Etat de l'objet-données (par rapport avec
+                                                  son cycle de vie). Permet par exemple d'indiquer
+                                                  si la signature du contenu binaire ou fichier a été vérifiée avant
+                                                  transfert aux archives.
+                                                Document
+                                                Status
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Submission">
+<TITRE>Submission</TITRE>
+<DOCUMENTATION>
+                                                AAES000006-16
+                                                BBIE
+                                                Document.Submission
+                                                1.0
+                                                0..1
+                                                Date de soumission de l'objet-données par un émetteur à un destinataire.
+                                                Document
+                                                Submission
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="TransferringAgencyDocumentIdentifier">
+<TITRE>TransferringAgencyDocumentIdentifier</TITRE>
+<DOCUMENTATION>
+                                                AAES000006-17
+                                                BBIE
+                                                Document.TransferringAgencyDocumentIdentifier
+                                                1.0
+                                                0..1
+                                                        Identifiant attribué au &lt;Document&gt; par le service  versant.
+                                                Document
+                                                TransferringAgencyDocumentIdentifier
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Type">
+<TITRE>Type</TITRE>
+<DOCUMENTATION>
+                                                AAES000006-18
+                                                BBIE
+                                                Document.Type
+                                                1.0
+                                                1..n
+                                                Type de l'objet-données, Permet notamment de différencier un objet contenu et l'information
+                                                  de représentation ou de pérennisation de cet objet  (OAIS), par exemple les données d'une base de
+                                                  données et le descriptif de sa structure.
+                                                Document
+                                                Type
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="RelatedData">
+<TITRE>RelatedData</TITRE>
+<DOCUMENTATION>
+                                                AAES000006-20
+                                                ASBIE
+                                                Document.RelatedData
+                                                1.0
+                                                0..n
+                                                Bloc regroupant d'une part la donnée liée au document (par exemple un jeton d'horodatage, 
+                                                        un schéma, une signature) et d'autre part le type de relation qui lie cette donnée au contenu binaire / fichier 
+                                                        en cours de description.
+                                                Document
+                                                RelatedData
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Data">
+<TITRE>Data</TITRE>
+<DOCUMENTATION>
+                                                AAES000008-01
+                                                BBIE
+                                                RelatedDataType.Data
+                                                1.0
+                                                1..1
+                                                Objet-données en lien avec l'objet-données décrit. Il peut s'agir d'une information
+                                                        externe ou interne (par exemple un jeton d'horodatage, un schéma, une signature).
+                                                RelatedDataType
+                                                Data
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Relation">
+<TITRE>Relation</TITRE>
+<DOCUMENTATION>
+                                                AAES000008-02
+                                                BBIE
+                                                RelatedDataType.Relation
+                                                1.0
+                                                1..1
+                                                Type de relation qui existe entre l'objet-données décrit et l'objet-données lié.
+                                                RelatedDataType
+                                                Relation
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CustodialHistoryItem">
+<TITRE>CustodialHistoryItem</TITRE>
+<DOCUMENTATION>
+                                                AAES000009-01
+                                                BBIE
+                                                CustodialHistory.CustodialHistoryItem
+                                                1.0
+                                                1..n
+                                                Description d'une période ou d'un événement dans l'historique.
+                                                CustodialHistory
+                                                CustodialHistoryItem
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="RelatedObjectIdentifier">
+<TITRE>RelatedObjectIdentifier</TITRE>
+<DOCUMENTATION>
+                                                AAES000010-01
+                                                BBIE
+                                                RelatedObjectReferenceType.RelatedObjectIdentifier
+                                                1.0
+                                                1..1
+                                                Identifiant d'un objet ne faisant pas partie du présent paquet d'information.
+                                                RelatedObjectReferenceType
+                                                RelatedObjectIdentifier
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Signature">
+<TITRE>Signature</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SignatureValue">
+<TITRE>SignatureValue</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SignedInfo">
+<TITRE>SignedInfo</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CanonicalizationMethod">
+<TITRE>CanonicalizationMethod</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SignatureMethod">
+<TITRE>SignatureMethod</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="HMACOutputLength">
+<TITRE>HMACOutputLength</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Reference">
+<TITRE>Reference</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Transforms">
+<TITRE>Transforms</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Transform">
+<TITRE>Transform</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="XPath">
+<TITRE>XPath</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="DigestMethod">
+<TITRE>DigestMethod</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="DigestValue">
+<TITRE>DigestValue</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="KeyInfo">
+<TITRE>KeyInfo</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="KeyName">
+<TITRE>KeyName</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="MgmtData">
+<TITRE>MgmtData</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="KeyValue">
+<TITRE>KeyValue</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="RetrievalMethod">
+<TITRE>RetrievalMethod</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="X509Data">
+<TITRE>X509Data</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="X509IssuerSerial">
+<TITRE>X509IssuerSerial</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="X509SKI">
+<TITRE>X509SKI</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="X509SubjectName">
+<TITRE>X509SubjectName</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="X509Certificate">
+<TITRE>X509Certificate</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="X509CRL">
+<TITRE>X509CRL</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="X509IssuerName">
+<TITRE>X509IssuerName</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="X509SerialNumber">
+<TITRE>X509SerialNumber</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="PGPData">
+<TITRE>PGPData</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="PGPKeyID">
+<TITRE>PGPKeyID</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="PGPKeyPacket">
+<TITRE>PGPKeyPacket</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SPKIData">
+<TITRE>SPKIData</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SPKISexp">
+<TITRE>SPKISexp</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Object">
+<TITRE>Object</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Manifest">
+<TITRE>Manifest</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SignatureProperties">
+<TITRE>SignatureProperties</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SignatureProperty">
+<TITRE>SignatureProperty</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="DSAKeyValue">
+<TITRE>DSAKeyValue</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="P">
+<TITRE>P</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Q">
+<TITRE>Q</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="G">
+<TITRE>G</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Y">
+<TITRE>Y</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="J">
+<TITRE>J</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Seed">
+<TITRE>Seed</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="PgenCounter">
+<TITRE>PgenCounter</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="RSAKeyValue">
+<TITRE>RSAKeyValue</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Modulus">
+<TITRE>Modulus</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Exponent">
+<TITRE>Exponent</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Any">
+<TITRE>Any</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ObjectIdentifier">
+<TITRE>ObjectIdentifier</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Identifier">
+<TITRE>Identifier</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="DocumentationReferences">
+<TITRE>DocumentationReferences</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="DocumentationReference">
+<TITRE>DocumentationReference</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="EncapsulatedPKIData">
+<TITRE>EncapsulatedPKIData</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Include">
+<TITRE>Include</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ReferenceInfo">
+<TITRE>ReferenceInfo</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="EncapsulatedTimeStamp">
+<TITRE>EncapsulatedTimeStamp</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="XMLTimeStamp">
+<TITRE>XMLTimeStamp</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="XAdESTimeStamp">
+<TITRE>XAdESTimeStamp</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="OtherTimeStamp">
+<TITRE>OtherTimeStamp</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="QualifyingProperties">
+<TITRE>QualifyingProperties</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SignedProperties">
+<TITRE>SignedProperties</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="UnsignedProperties">
+<TITRE>UnsignedProperties</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SignedSignatureProperties">
+<TITRE>SignedSignatureProperties</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SignedDataObjectProperties">
+<TITRE>SignedDataObjectProperties</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="UnsignedSignatureProperties">
+<TITRE>UnsignedSignatureProperties</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="UnsignedDataObjectProperties">
+<TITRE>UnsignedDataObjectProperties</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SigningTime">
+<TITRE>SigningTime</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SigningCertificate">
+<TITRE>SigningCertificate</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SignaturePolicyIdentifier">
+<TITRE>SignaturePolicyIdentifier</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SignatureProductionPlace">
+<TITRE>SignatureProductionPlace</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SignerRole">
+<TITRE>SignerRole</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="DataObjectFormat">
+<TITRE>DataObjectFormat</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CommitmentTypeIndication">
+<TITRE>CommitmentTypeIndication</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AllDataObjectsTimeStamp">
+<TITRE>AllDataObjectsTimeStamp</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="IndividualDataObjectsTimeStamp">
+<TITRE>IndividualDataObjectsTimeStamp</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CounterSignature">
+<TITRE>CounterSignature</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SignatureTimeStamp">
+<TITRE>SignatureTimeStamp</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CompleteCertificateRefs">
+<TITRE>CompleteCertificateRefs</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CompleteRevocationRefs">
+<TITRE>CompleteRevocationRefs</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AttributeCertificateRefs">
+<TITRE>AttributeCertificateRefs</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AttributeRevocationRefs">
+<TITRE>AttributeRevocationRefs</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SigAndRefsTimeStamp">
+<TITRE>SigAndRefsTimeStamp</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="RefsOnlyTimeStamp">
+<TITRE>RefsOnlyTimeStamp</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CertificateValues">
+<TITRE>CertificateValues</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="RevocationValues">
+<TITRE>RevocationValues</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AttrAuthoritiesCertValues">
+<TITRE>AttrAuthoritiesCertValues</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AttributeRevocationValues">
+<TITRE>AttributeRevocationValues</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ArchiveTimeStamp">
+<TITRE>ArchiveTimeStamp</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="UnsignedDataObjectProperty">
+<TITRE>UnsignedDataObjectProperty</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="QualifyingPropertiesReference">
+<TITRE>QualifyingPropertiesReference</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Cert">
+<TITRE>Cert</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CertDigest">
+<TITRE>CertDigest</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="IssuerSerial">
+<TITRE>IssuerSerial</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SignaturePolicyId">
+<TITRE>SignaturePolicyId</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SignaturePolicyImplied">
+<TITRE>SignaturePolicyImplied</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SigPolicyId">
+<TITRE>SigPolicyId</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SigPolicyHash">
+<TITRE>SigPolicyHash</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SigPolicyQualifiers">
+<TITRE>SigPolicyQualifiers</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SigPolicyQualifier">
+<TITRE>SigPolicyQualifier</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SPURI">
+<TITRE>SPURI</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="SPUserNotice">
+<TITRE>SPUserNotice</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="NoticeRef">
+<TITRE>NoticeRef</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ExplicitText">
+<TITRE>ExplicitText</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="NoticeNumbers">
+<TITRE>NoticeNumbers</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="int">
+<TITRE>int</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="MimeType">
+<TITRE>MimeType</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Encoding">
+<TITRE>Encoding</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CommitmentTypeId">
+<TITRE>CommitmentTypeId</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ObjectReference">
+<TITRE>ObjectReference</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AllSignedDataObjects">
+<TITRE>AllSignedDataObjects</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CommitmentTypeQualifiers">
+<TITRE>CommitmentTypeQualifiers</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CommitmentTypeQualifier">
+<TITRE>CommitmentTypeQualifier</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="City">
+<TITRE>City</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="StateOrProvince">
+<TITRE>StateOrProvince</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="PostalCode">
+<TITRE>PostalCode</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CountryName">
+<TITRE>CountryName</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ClaimedRoles">
+<TITRE>ClaimedRoles</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CertifiedRoles">
+<TITRE>CertifiedRoles</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ClaimedRole">
+<TITRE>ClaimedRole</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CertifiedRole">
+<TITRE>CertifiedRole</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CertRefs">
+<TITRE>CertRefs</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CRLRefs">
+<TITRE>CRLRefs</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="OCSPRefs">
+<TITRE>OCSPRefs</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="OtherRefs">
+<TITRE>OtherRefs</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CRLRef">
+<TITRE>CRLRef</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="DigestAlgAndValue">
+<TITRE>DigestAlgAndValue</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CRLIdentifier">
+<TITRE>CRLIdentifier</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Issuer">
+<TITRE>Issuer</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="IssueTime">
+<TITRE>IssueTime</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Number">
+<TITRE>Number</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="OCSPRef">
+<TITRE>OCSPRef</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="OCSPIdentifier">
+<TITRE>OCSPIdentifier</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ByName">
+<TITRE>ByName</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ByKey">
+<TITRE>ByKey</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ResponderID">
+<TITRE>ResponderID</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ProducedAt">
+<TITRE>ProducedAt</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="OtherRef">
+<TITRE>OtherRef</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="EncapsulatedX509Certificate">
+<TITRE>EncapsulatedX509Certificate</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="OtherCertificate">
+<TITRE>OtherCertificate</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="CRLValues">
+<TITRE>CRLValues</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="OCSPValues">
+<TITRE>OCSPValues</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="OtherValues">
+<TITRE>OtherValues</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="EncapsulatedCRLValue">
+<TITRE>EncapsulatedCRLValue</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="EncapsulatedOCSPValue">
+<TITRE>EncapsulatedOCSPValue</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="OtherValue">
+<TITRE>OtherValue</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="TimeStampValidationData">
+<TITRE>TimeStampValidationData</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ArchiveTimeStampV2">
+<TITRE>ArchiveTimeStampV2</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="PKCS7Signature">
+<TITRE>PKCS7Signature</TITRE>
+<DOCUMENTATION>
+                        SGAES000001-01
+                        BBIE
+                        Signature.PKCS7Signature
+                        1.0
+                        1..1
+                        Signature Binaire de type PKCS7.
+                        Signature
+                        PKCS7Signature
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="XMLSignature">
+<TITRE>XMLSignature</TITRE>
+<DOCUMENTATION>
+                        SGAES000001-02
+                        ASBIE
+                        Signature.XMLSignature
+                        1.0
+                        1..1
+                        Signature XML de type XMLDsig ou XADES
+                        Signature
+                        XMLSignature
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Acknowledgement">
+<TITRE>Acknowledgement</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Comment">
+<TITRE>Comment</TITRE>
+<DOCUMENTATION>
+                        ACKAES000001-01
+                        BBIE
+                        AcknowledgementType.Comment
+                        1.0
+                        0..n
+                        Commentaire
+                        AcknowledgementType
+                        Comment
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Date">
+<TITRE>Date</TITRE>
+<DOCUMENTATION>
+                        ACKAES000001-02
+                        BBIE
+                        AcknowledgementType.Date
+                        1.0
+                        1..1
+                        Date d'émission du message
+                        AcknowledgementType
+                        Date
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AcknowledgementIdentifier">
+<TITRE>AcknowledgementIdentifier</TITRE>
+<DOCUMENTATION>
+                        ACKAES000001-03
+                        BBIE
+                        AcknowledgementType.AcknowledgementIdentifier
+                        1.0
+                        1..1
+                        Identifiant de l'accusé de réception
+                        AcknowledgementType
+                        AcknowledgementIdentifier
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="MessageReceivedIdentifier">
+<TITRE>MessageReceivedIdentifier</TITRE>
+<DOCUMENTATION>
+                        ACKAES000001-04
+                        BBIE
+                        AcknowledgementType.MessageReceivedIdentifier
+                        1.0
+                        1..1
+                        Identifiant du message dont on accuse réception
+                        AcknowledgementType
+                        RequestIdentifier
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Receiver">
+<TITRE>Receiver</TITRE>
+<DOCUMENTATION>
+                        ACKAES000001-05
+                        ASBIE
+                        AcknowledgementType.Receiver
+                        1.0
+                        1..1
+                        Service qui accuse réception
+                        AcknowledgementType
+                        Receiver
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Sender">
+<TITRE>Sender</TITRE>
+<DOCUMENTATION>
+                            ACKAES000001-06
+                            ASBIE
+                            AcknowledgementType.Sender
+                            1.0
+                            1..1
+                            Expéditeur du message dont on accuse réception
+                            AcknowledgementType
+                            Sender
+                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="NonRepudiation">
+<TITRE>NonRepudiation</TITRE>
+<DOCUMENTATION>
+                        ACKAES000001-07
+                        ASBIE
+                        AcknowledgementType.NonRepudiation
+                        1.0
+                        0..1
+                        Signature du message
+                        AcknowledgementType
+                        NonRepudiation
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ArchiveDestructionNotification">
+<TITRE>ArchiveDestructionNotification</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AuthorizationRequestReplyIdentifier">
+<TITRE>AuthorizationRequestReplyIdentifier</TITRE>
+<DOCUMENTATION>
+                        ADSAES000005-03
+                        BBIE
+                        ArchiveDestructionNotification.AuthorizationRequestReplyIdentifier
+                        1.0
+                        1..1
+                        Identifiant de la réponse d'accord pour l'élimination
+                        ArchiveDestructionNotification
+                        AuthorizationRequestReplyIdentifier
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="DestructionNotificationIdentifier">
+<TITRE>DestructionNotificationIdentifier</TITRE>
+<DOCUMENTATION>
+                        ADSAES000005-04
+                        BBIE
+                        ArchiveDestructionNotification.DestructionNotificationIdentifier
+                        1.0
+                        1..1
+                        Identifiant de la notification d'élimination
+                        ArchiveDestructionNotification
+                        DestructionNotificationIdentifier
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="UnitIdentifier">
+<TITRE>UnitIdentifier</TITRE>
+<DOCUMENTATION>
+                        ADSAES000005-06
+                        BBIE
+                        ArchiveDestructionNotification.UnitIdentifier
+                        1.0
+                        1..n
+                        Tout identiant permettant de reconnaître le contenu à éliminer
+                        ArchiveDestructionNotification
+                        UnitIdentifier
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ArchivalAgency">
+<TITRE>ArchivalAgency</TITRE>
+<DOCUMENTATION>
+                        ADSAES000005-08
+                        ASBIE
+                        ArchiveDestructionNotification.ArchivalAgency
+                        1.0
+                        1..1
+                        Service d'archives
+                        ArchiveDestructionNotification
+                        ArchivalAgency
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ArchiveTransfer">
+<TITRE>ArchiveTransfer</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="RelatedTransferReference">
+<TITRE>RelatedTransferReference</TITRE>
+<DOCUMENTATION>
+                                                ATAES000001-03
+                                                BBIE
+                                                ArchiveTransfer.RelatedTransferReference
+                                                1.0
+                                                0..1
+                                                Référence à un autre transfert
+                                                ArchiveTransfer
+                                                RelatedTransferReference
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="TransferIdentifier">
+<TITRE>TransferIdentifier</TITRE>
+<DOCUMENTATION>
+                                                ATAES000001-04
+                                                BBIE
+                                                ArchiveTransfer.TransferIdentifier
+                                                1.0
+                                                1..1
+                                                Identifiant du transfert
+                                                ArchiveTransfer
+                                                TransferIdentifier
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="TransferRequestReplyIdentifier">
+<TITRE>TransferRequestReplyIdentifier</TITRE>
+<DOCUMENTATION>
+                                                ATAES000001-05
+                                                BBIE
+                                                ArchiveTransfer.TransferRequestReplyIdentifier
+                                                1.0
+                                                0..1
+                                                Identifiant de la réponse à la demande de transfert (permet par exemple de
+                                                  rappeler l'accord donné par le service d'archives)
+                                                ArchiveTransfer
+                                                TransferRequestReplyIdentifier
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="TransferringAgency">
+<TITRE>TransferringAgency</TITRE>
+<DOCUMENTATION>
+                                                ATAES000001-06
+                                                ASBIE
+                                                ArchiveTransfer.TransferringAgency
+                                                1.0
+                                                1..1
+                                                Service versant
+                                                ArchiveTransfer
+                                                TransferringAgency
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ArchiveTransferReply">
+<TITRE>ArchiveTransferReply</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="GrantDate">
+<TITRE>GrantDate</TITRE>
+<DOCUMENTATION>
+                                                ATAES000002-10
+                                                BBIE
+                                                ArchiveTransferReply.GrantDate
+                                                1.0
+                                                0..1
+                                                Date de prise en compte de la décision de transfert de responsabilité
+                                                ArchiveTransferReply
+                                                GrantDate
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ReplyCode">
+<TITRE>ReplyCode</TITRE>
+<DOCUMENTATION>
+                                                ATAES000002-03
+                                                BBIE
+                                                ArchiveTransferReply.ReplyCode
+                                                1.0
+                                                0..1
+                                                Indique l'anomalie en cas de rejet du transfert.
+                                                ArchiveTransferReply
+                                                ReplyCode
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="TransferReplyIdentifier">
+<TITRE>TransferReplyIdentifier</TITRE>
+<DOCUMENTATION>
+                                                ATAES000002-05
+                                                BBIE
+                                                ArchiveTransferReply.TransferReplyIdentifier
+                                                1.0
+                                                1..1
+                                                Identifiant de la réponse au transfert
+                                                ArchiveTransferReply
+                                                TransferReplyIdentifier
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ArchiveTransferRequest">
+<TITRE>ArchiveTransferRequest</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="TransferDate">
+<TITRE>TransferDate</TITRE>
+<DOCUMENTATION>
+                                                ATRAES000001-04
+                                                BBIE
+                                                ArchiveTransferRequest.TransferDate
+                                                1.0
+                                                0..1
+                                                Date prévue pour le
+                                                  transfert
+                                                ArchiveTransferRequest
+                                                TransferDate
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="TransferRequestIdentifier">
+<TITRE>TransferRequestIdentifier</TITRE>
+<DOCUMENTATION>
+                                                ATRAES000001-05
+                                                BBIE
+                                                ArchiveTransferRequest.TransferRequestIdentifier
+                                                1.0
+                                                1..1
+                                                Identifiant de la demande de transfert
+                                                ArchiveTransferRequest
+                                                TransferRequestIdentifier
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ArchiveTransferRequestReply">
+<TITRE>ArchiveTransferRequestReply</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ArchiveModificationNotification">
+<TITRE>ArchiveModificationNotification</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ModificationNotificationIdentifier">
+<TITRE>ModificationNotificationIdentifier</TITRE>
+<DOCUMENTATION>
+                                                AMAES000001-03
+                                                BBIE
+                                                ArchiveModificationNotification.ModificationNotificationIdentifier
+                                                1.0
+                                                1..1
+                                                Identification de la notification de modification
+                                                ArchiveModificationNotification
+                                                ModificationNotificationIdentifier
+                                        </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ArchiveDeliveryRequest">
+<TITRE>ArchiveDeliveryRequest</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="DeliveryRequestIdentifier">
+<TITRE>DeliveryRequestIdentifier</TITRE>
+<DOCUMENTATION>
+                        ADYAES000001-03
+                        BBIE
+                        ArchiveDeliveryRequest.DeliveryRequestIdentifier
+                        1.0
+                        1..1
+                        Identifiant de la demande de communication
+                        ArchiveDeliveryRequest
+                        DeliveryRequestIdentifier
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Derogation">
+<TITRE>Derogation</TITRE>
+<DOCUMENTATION>
+                        ADYAES000001-04
+                        BBIE
+                        ArchiveDeliveryRequest.Derogation
+                        1.0
+                        1..1
+                        Indique si le demandeur souhaite qu'une procédure de dérogation soit enclenchée en cas de non communicabilité de l'archive demandée en communication
+                        ArchiveDeliveryRequest
+                        Derogation
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Requester">
+<TITRE>Requester</TITRE>
+<DOCUMENTATION>
+                        ADYAES000001-06
+                        ASBIE
+                        ArchiveDeliveryRequest.Requester
+                        1.0
+                        1..1
+                        Demandeur
+                        ArchiveDeliveryRequest
+                        Requester
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ArchiveDeliveryRequestReply">
+<TITRE>ArchiveDeliveryRequestReply</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="DeliveryRequestReplyIdentifier">
+<TITRE>DeliveryRequestReplyIdentifier</TITRE>
+<DOCUMENTATION>
+                        ADYAES000002-04
+                        BBIE
+                        ArchiveDeliveryRequestReply.DeliveryRequestReplyIdentifier
+                        1.0
+                        1..1
+                        Identifiant de la réponse à la demande de communcation
+                        ArchiveDeliveryRequestReply
+                        DeliveryRequestReplyIdentifier
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ArchiveRestitutionRequest">
+<TITRE>ArchiveRestitutionRequest</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="RestitutionRequestIdentifier">
+<TITRE>RestitutionRequestIdentifier</TITRE>
+<DOCUMENTATION>
+                        ARAES000001-03
+                        BBIE
+                        ArchiveRestitutionRequest.RestitutionRequestIdentifier
+                        1.0
+                        1..1
+                        Identifiant de la demande de restitution
+                        ArchiveRestitutionRequest
+                        RestitutionRequestIdentifier
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ArchiveRestitutionRequestReply">
+<TITRE>ArchiveRestitutionRequestReply</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="RestitutionRequestReplyIdentifier">
+<TITRE>RestitutionRequestReplyIdentifier</TITRE>
+<DOCUMENTATION>
+                        ARAES000002-05
+                        BBIE
+                        ArchiveRestitutionRequestReply.RestitutionRequestReplyIdentifier
+                        1.0
+                        1..1
+                        Identifiant de la réponse à la demande de restitution
+                        ArchiveRestitutionRequestReply
+                        RestitutionRequestReplyIdentifier
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ArchiveRestitution">
+<TITRE>ArchiveRestitution</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="RestitutionIdentifier">
+<TITRE>RestitutionIdentifier</TITRE>
+<DOCUMENTATION>
+                        ARAES000003-03
+                        BBIE
+                        ArchiveRestitution.RestitutionIdentifier
+                        1.0
+                        1..1
+                        Identifiant de la restitution
+                        ArchiveRestitution
+                        RestitutionIdentifier
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AuthorizationOriginatingAgencyRequest">
+<TITRE>AuthorizationOriginatingAgencyRequest</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AuthorizationOriginatingAgencyRequestIdentifier">
+<TITRE>AuthorizationOriginatingAgencyRequestIdentifier</TITRE>
+<DOCUMENTATION>
+                        AUTAES000001-03
+                        BBIE
+                        AuthorizationOriginatingAgencyRequest.AuthorizationOriginatingAgencyRequestIdentifier
+                        1.0
+                        1..1
+                        Identifiant de la demande d'autorisation au service producteur
+                        AuthorizationOriginatingAgencyRequest
+                        AuthorizationOriginatingAgencyRequestIdentifier
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Request">
+<TITRE>Request</TITRE>
+<DOCUMENTATION>
+                        AUTAES000001-06
+                        ASBIE
+                        AuthorizationOriginatingAgencyRequest.Request
+                        1.0
+                        1..1
+                        La demande
+                        AuthorizationOriginatingAgencyRequest
+                        Request
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AuthorizationControlAuthorityRequest">
+<TITRE>AuthorizationControlAuthorityRequest</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AuthorizationControlAuthorityRequestIdentifier">
+<TITRE>AuthorizationControlAuthorityRequestIdentifier</TITRE>
+<DOCUMENTATION>
+                        AUTAES000002-03
+                        BBIE
+                        AuthorizationControlAuthorityRequest.AuthorizationControlAuthorityRequestIdentifier
+                        1.0
+                        1..1
+                        Identifiant de la demande d'autorisation au service de contrôle
+                        AuthorizationControlAuthorityRequest
+                        AuthorizationControlAuthorityRequestIdentifier
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="ControlAuthority">
+<TITRE>ControlAuthority</TITRE>
+<DOCUMENTATION>
+                        AUTAES000002-05
+                        ASBIE
+                        AuthorizationControlAuthorityRequest.ControlAuthority
+                        1.0
+                        1..1
+                        Services de contrôle
+                        AuthorizationControlAuthorityRequest
+                        ControlAuthority
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="OriginatingAgencyAuthorization">
+<TITRE>OriginatingAgencyAuthorization</TITRE>
+<DOCUMENTATION>
+                        AUTAES000002-06
+                        ASBIE
+                        AuthorizationControlAuthorityRequest.OriginatingAgencyAuthorization
+                        1.0
+                        1..1
+                        Service producteur
+                        AuthorizationControlAuthorityRequest
+                        OriginatingAgencyAuthorization
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AuthorizationOriginatingAgencyRequestReply">
+<TITRE>AuthorizationOriginatingAgencyRequestReply</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AuthorizationOriginatingAgencyRequestReplyIdentifier">
+<TITRE>AuthorizationOriginatingAgencyRequestReplyIdentifier</TITRE>
+<DOCUMENTATION>
+                        AUTAES000003-04
+                        BBIE
+                        AuthorizationOriginatingAgencyRequestReply.AuthorizationOriginatingAgencyRequestReplyIdentifier
+                        1.0
+                        1..1
+                        Identifiant de la réponse à la demande d'autorisation
+                        AuthorizationOriginatingAgencyRequestReply
+                        AuthorizationOriginatingAgencyRequestReplyIdentifier
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AuthorizationControlAuthorityRequestReply">
+<TITRE>AuthorizationControlAuthorityRequestReply</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AuthorizationControlAuthorityRequestReplyIdentifier">
+<TITRE>AuthorizationControlAuthorityRequestReplyIdentifier</TITRE>
+<DOCUMENTATION>
+                        AUTAES000004-04
+                        BBIE
+                        AuthorizationControlAuthorityRequestReply.AuthorizationControlAuthorityRequestReplyIdentifier
+                        1.0
+                        1..1
+                        Identifiant de la réponse à la demande d'autorisation
+                        AuthorizationControlAuthorityRequestReply
+                        AuthorizationControlAuthorityRequestReplyIdentifier
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="AuthorisationReason">
+<TITRE>AuthorisationReason</TITRE>
+<DOCUMENTATION>
+                        AUTAES000007-01
+                        BBIE
+                        RequestType.AuthorisationReason
+                        1.0
+                        1..1
+                        Raison de la demande d'autorisation (pour élimination, pour communication)
+                        RequestType
+                        AuthorisationReason
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="RequestDate">
+<TITRE>RequestDate</TITRE>
+<DOCUMENTATION>
+                        AUTAES000007-02
+                        BBIE
+                        RequestType.RequestDate
+                        1.0
+                        1..1
+                        Date de la demande d'autorisation
+                        RequestType
+                        RequestDate
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Authorization">
+<TITRE>Authorization</TITRE>
+</STRINGS_ELEMENT>
+<STRINGS_ELEMENT element="Answer">
+<TITRE>Answer</TITRE>
+<DOCUMENTATION>
+                        AUTAES000008-01
+                        BBIE
+                        AuthorizationType.Answer
+                        1.0
+                        1..1
+                        Autorisation
+                        AuthorizationType
+                        Answer
+                    </DOCUMENTATION>
+</STRINGS_ELEMENT>
+</STRINGS>
+</CONFIG_JAXE>

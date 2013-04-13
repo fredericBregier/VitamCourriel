@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ======================================================== -->
+<!-- ===== Code List: Document Type Code                 ===== -->
+<!-- ======================================================== -->
+<!--
+    Schema agency: Service interministériel des archives de France (SIAF)
+    Schema version: 1.0
+    Schema date: 06 Juillet 2012
+    
+    Copyright (c) 2011 Service interministériel des archives de France
+    
+    Ce document est sous licence Creative Commons Paternité 2.0 France.
+    Pour accéder à une copie de cette licence, merci de vous rendre à l'adresse suivante
+    http://creativecommons.org/licenses/by/2.0/fr/ ou envoyez un courrier à
+    Creative Commons, 444 Castro Street, Suite 900,
+    Mountain View, California, 94041, USA.
+-->
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ccts="urn:un:unece:uncefact:documentation:standard:CoreComponentsTechnicalSpecification:2"
+    xmlns="urn:un:unece:uncefact:codelist:DAF:documentTypeCode"
+    xmlns:clmDAFDocumentTypeCode="urn:un:unece:uncefact:codelist:DAF:documentTypeCode"
+    targetNamespace="urn:un:unece:uncefact:codelist:DAF:documentTypeCode"
+    elementFormDefault="qualified" attributeFormDefault="unqualified" version="2009-08-18">
+    
+    
+    <!-- ====================================================================== -->
+    <!-- =====  Element Declarations				      ===== -->
+    <!-- ====================================================================== -->
+    <!-- =====  Root Element Declaration				      ===== -->
+    <!-- ====================================================================== -->
+    <xsd:element name="DocumentTypeCode" type="clmDAFDocumentTypeCode:DocumentTypeCodeType"/>
+    <!-- ====================================================================== -->
+    <!-- ================ Type Definitions ============================= -->
+    <!-- =============================================================== -->
+    <!-- ===== Code List DocumentType: DocumentType Code         ======= -->
+    <!-- =============================================================== -->
+    
+    
+    
+    <xsd:simpleType name="DocumentTypeCodeType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="fr">
+                <ccts:Name>Table des types d'information</ccts:Name>
+                <ccts:Description>Source: la norme ISO 14721 OAIS (Open Archival Information System)</ccts:Description>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:token">
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

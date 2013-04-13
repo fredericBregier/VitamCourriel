@@ -1,0 +1,23 @@
+
+getting mime
+wget -m ftp://ftp.iana.org/assignments/media-types/
+cd ftp.iana.org/assignments/media-types
+foreach typ (`find * -type d -print`)
+   links -dump $typ/index.html | \
+      perl -p -e "s|^\s+|$typ/|;" >> mtypes.txt
+end
+# manually edit mtypes.txt to remove the garbage lines
+foreach typ (`cut -d ' ' mtypes.txt`)
+   grep -q -i -F "$typ" mime.types || echo $typ
+end
+
+
+- digest : menu pour dir src, dir dst, tar if any, global name +[_all]"_digest.xml"
+
+eml 1) analyse date création émission réception , auteur récepteur copie caché , titre , présence pj , keyword corps
+1b) recherche doublons
+1c) recherche fil de discussion via In_reply_to, message_id, date création + titre (fw re ...)
+2) analyse pj nom fichier + type + techniques + keyword
+3) fusion keyword corps + pj priorité moindre (notion de profondeur )
+4) format pj... et réintégration dans eml nouveau
+5) tri répertoire émetteur + nommage date création + émetteur + récepteur + titre + pj/rien 

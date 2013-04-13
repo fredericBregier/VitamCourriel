@@ -1,0 +1,244 @@
+usage: droid [options]
+OPTIONS:
+  -c,--check-signature-update         Check whether signature updates are
+                                      available for download.
+  -d,--download-signature-update      Download the latest signature updates, if
+                                      a newer version is available.
+  -h,--help                           Display this help.  More help is
+                                      available using the help menu in the
+                                      graphical user interface.
+  -l,--list-reports                   List the available reports and output
+                                      formats.
+  -s,--set-signature-file <version>   Set the current default signature file
+                                      version.  For example:
+                                      droid -s 42
+  -v,--version                        Display the version of the DROID
+                                      software.
+  -X,--list-signature-files           List all locally available signature
+                                      files.
+  -x,--display-signature-file         Display the current default signature
+                                      file.
+  -Nr,--no-profile-resource <folder>  Identify files in a folder without the
+                                      use of a profile.  The folder path should
+                                      be bounded by double quotes.  The scan
+                                      results will be sent to standard output.
+                                      For example: droid -Nr "C:\Files\A
+                                      Folder"
+                                      Note: You cannot use reporting, filtering
+                                      and exporting when using the -Nr option.
+     -A,--open-archives                  [optional] Open archive (zip, tar,
+                                         gzip) files and identify all their
+                                         contents.
+     -Nc,--container-file <filename>     [optional] The container signature
+                                         file to be used for identification.
+                                         If omitted, container-format files may
+                                         be identified by container type only.
+     -Ns,--signature-file <filename>     Specify the signature file to be used
+                                         for identification.
+     -Nx,--extension-list <extensions>   [optional] Only identify files with
+                                         the given extensions
+                                         For example: -Nx csv jp2
+     -q,--quiet                          [optional] When run in PROFILE mode
+                                         DROID will limit its console output to
+                                         errors only.  When run in NO PROFILE
+                                         mode DROID will limit its output to
+                                         CSV data only.
+     -R,--recurse                        [optional] Recurse into all subfolders
+                                         of any folder specified using the -a
+                                         or -Nr options. Files in all
+                                         sub-folders (and their sub-folders,
+                                         and so on) will be processed as well.
+                                         If this option is omitted, only the
+                                         files directly under the folder will
+                                         be processed. For example:
+                                         droid -R -a "C:\Files\Another Folder"
+                                         -p "C:\Results\result3.droid"
+  -a,--profile-resources <resources>  Add resources to a new profile and run
+                                      it.  Resources are the file path of any
+                                      file or folder you want to profile.  The
+                                      file paths should be given surrounded in
+                                      double quotes, and separated by spaces
+                                      from each other.  The profile results
+                                      will be saved to a single file specified
+                                      using the -p option.
+                                      For example: droid -a "C:\Files\A Folder"
+                                      "C:\Files\file.xxx" -p
+                                      "C:\Results\result1.droid"
+                                      Note: You cannot use reporting, filtering
+                                      and exporting when using the -a option.
+     -p,--profile(s) <filename(s)>       When used in conjunction with
+                                         reporting, filtering or exporting, -p
+                                         specifies a list of profiles to open.
+                                         The file paths of the profiles should
+                                         be bounded by double quotes, and
+                                         separated by spaces from each other.
+                                         When used in conjunction with the -a
+                                         option, the results of the new profile
+                                         will be saved to that file, and you
+                                         can only specify a single file.
+                                         For example: droid -p
+                                         "C:\Results\result1.droid"
+                                         "C:\Results\result2.droid" -e
+                                         "C:\ExportscombinedResults.csv"
+                                         droid -a "C:\Files\A Folder"
+                                         "C:\Files\file.xxx" -p
+                                         "C:\Results\result1.droid"
+     -q,--quiet                          [optional] When run in PROFILE mode
+                                         DROID will limit its console output to
+                                         errors only.  When run in NO PROFILE
+                                         mode DROID will limit its output to
+                                         CSV data only.
+     -R,--recurse                        [optional] Recurse into all subfolders
+                                         of any folder specified using the -a
+                                         or -Nr options. Files in all
+                                         sub-folders (and their sub-folders,
+                                         and so on) will be processed as well.
+                                         If this option is omitted, only the
+                                         files directly under the folder will
+                                         be processed. For example:
+                                         droid -R -a "C:\Files\Another Folder"
+                                         -p "C:\Results\result3.droid"
+  -e,--export-file <filename>         Export profiles to a CSV file with one
+                                      row per profiled file.  If any filters
+                                      are specified, then they will apply to
+                                      the exported file.
+                                      For example: droid -p
+                                      "C:\Results\result1.droid"
+                                      "C:\Results\result2.droid" -e
+                                      "C:\ExportscombinedResults.csv"
+                                      droid -p "C:\Results\result3.droid" -f
+                                      "PUID any_of fmt/111 fmt/112" -e
+                                      "C:\Exports\filteredResults.csv"
+     -f,--filter-all <filter ...>        [optional] Filter the profiles
+                                         specified using the -p option.  Only
+                                         results which match ALL filter
+                                         criteria specified will appear.
+                                         Filter criteria are specified using
+                                         the following method:
+                                         <field><operator><values> where
+                                         <field> is the name of a filterable
+                                         field, <operator> is the type of
+                                         comparison to use, and <values> are
+                                         the value or values against which the
+                                         field value should be compared.  The
+                                         -k option provides information on the
+                                         available fields and operators.  You
+                                         can specify more than one filter
+                                         criteria, bounded by double quotes and
+                                         separated by spaces from each other.
+                                         For example:
+                                         droid -p "C:\Results\result3.droid"
+                                         -f "PUID any_of fmt/111 fmt/112"
+                                         -e "C:\Exports\filteredResults.csv"
+                                         droid -p "C:\Results\result1.droid"
+                                         "C:\Results\result2.droid"
+                                         -f "file_size > 0"
+                                         -e "C:\Exports\filteredResults.csv"
+     -F,--filter-any <filter ...>        [optional] Filter profiles as the -f
+                                         option does, except results which
+                                         match ANY of the specified filter
+                                         criteria will appear.
+     -p,--profile(s) <filename(s)>       When used in conjunction with
+                                         reporting, filtering or exporting, -p
+                                         specifies a list of profiles to open.
+                                         The file paths of the profiles should
+                                         be bounded by double quotes, and
+                                         separated by spaces from each other.
+                                         When used in conjunction with the -a
+                                         option, the results of the new profile
+                                         will be saved to that file, and you
+                                         can only specify a single file.
+                                         For example: droid -p
+                                         "C:\Results\result1.droid"
+                                         "C:\Results\result2.droid" -e
+                                         "C:\ExportscombinedResults.csv"
+                                         droid -a "C:\Files\A Folder"
+                                         "C:\Files\file.xxx" -p
+                                         "C:\Results\result1.droid"
+  -E,--export-format <filename>       Export profiles to a CSV file with one
+                                      row per profiled file/format.  If any
+                                      filters are specified, then they will
+                                      apply to the exported file.
+                                      For example: droid -p
+                                      "C:\Results\result1.droid"
+                                      "C:\Results\result2.droid" -E
+                                      "C:\ExportscombinedResults.csv"
+                                      droid -p "C:\Results\result3.droid" -f
+                                      "PUID any_of fmt/111 fmt/112" -E
+                                      "C:\Exports\filteredResults.csv"
+     -f,--filter-all <filter ...>        [optional] Filter the profiles
+                                         specified using the -p option.  Only
+                                         results which match ALL filter
+                                         criteria specified will appear.
+                                         Filter criteria are specified using
+                                         the following method:
+                                         <field><operator><values> where
+                                         <field> is the name of a filterable
+                                         field, <operator> is the type of
+                                         comparison to use, and <values> are
+                                         the value or values against which the
+                                         field value should be compared.  The
+                                         -k option provides information on the
+                                         available fields and operators.  You
+                                         can specify more than one filter
+                                         criteria, bounded by double quotes and
+                                         separated by spaces from each other.
+                                         For example:
+                                         droid -p "C:\Results\result3.droid"
+                                         -f "PUID any_of fmt/111 fmt/112"
+                                         -e "C:\Exports\filteredResults.csv"
+                                         droid -p "C:\Results\result1.droid"
+                                         "C:\Results\result2.droid"
+                                         -f "file_size > 0"
+                                         -e "C:\Exports\filteredResults.csv"
+     -F,--filter-any <filter ...>        [optional] Filter profiles as the -f
+                                         option does, except results which
+                                         match ANY of the specified filter
+                                         criteria will appear.
+     -p,--profile(s) <filename(s)>       When used in conjunction with
+                                         reporting, filtering or exporting, -p
+                                         specifies a list of profiles to open.
+                                         The file paths of the profiles should
+                                         be bounded by double quotes, and
+                                         separated by spaces from each other.
+                                         When used in conjunction with the -a
+                                         option, the results of the new profile
+                                         will be saved to that file, and you
+                                         can only specify a single file.
+                                         For example: droid -p
+                                         "C:\Results\result1.droid"
+                                         "C:\Results\result2.droid" -e
+                                         "C:\ExportscombinedResults.csv"
+                                         droid -a "C:\Files\A Folder"
+                                         "C:\Files\file.xxx" -p
+                                         "C:\Results\result1.droid"
+  -r,--report <filename>              Save the report generated to the file
+                                      specified.  For example:
+                                      droid -p "C:\Results\result1.droid" -n
+                                      "PLANETS" -r
+                                      "C:\Reports\result1Report.xml"
+     -n,--report-name <report name>      Run the report with the specified name
+                                         on any profiles opened using the -p
+                                         option.  For example:
+                                         droid -p "C:Results\result1.droid" -n
+                                         "PLANETS" -r
+                                         "C:\Reports\result1Report.xml"
+     -p,--profile(s) <filename(s)>       When used in conjunction with
+                                         reporting, filtering or exporting, -p
+                                         specifies a list of profiles to open.
+                                         The file paths of the profiles should
+                                         be bounded by double quotes, and
+                                         separated by spaces from each other.
+                                         When used in conjunction with the -a
+                                         option, the results of the new profile
+                                         will be saved to that file, and you
+                                         can only specify a single file.
+                                         For example: droid -p
+                                         "C:\Results\result1.droid"
+                                         "C:\Results\result2.droid" -e
+                                         "C:\ExportscombinedResults.csv"
+                                         droid -a "C:\Files\A Folder"
+                                         "C:\Files\file.xxx" -p
+                                         "C:\Results\result1.droid"
+     -t,--report-type <report type>      Set the output file format of a
+                                         report.

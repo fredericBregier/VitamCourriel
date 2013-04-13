@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="checkfiles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="showformat"/>
+      </xs:sequence>
+      <xs:attribute name="date" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="source" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="showformat">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="file"/>
+        <xs:element ref="identification"/>
+        <xs:element ref="fileinfo" minOccurs="0"/>
+        <xs:element ref="filestatus" minOccurs="0"/>
+        <xs:element ref="metadata" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute name="date" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="status" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="file">
+    <xs:complexType>
+      <xs:attribute name="filename" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="identification">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="identity"/>
+        <xs:element minOccurs="0" ref="subidentities"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="subidentities">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="identity"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fileinfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="lastmodified"/>
+        <xs:element minOccurs="0" ref="created"/>
+        <xs:element minOccurs="0" ref="creatingApplicationName"/>
+        <xs:element minOccurs="0" ref="creatingApplicationVersion"/>
+        <xs:element ref="size"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lastmodified" type="xs:string"/>
+  <xs:element name="created" type="xs:string"/>
+  <xs:element name="creatingApplicationName" type="xs:string"/>
+  <xs:element name="creatingApplicationVersion" type="xs:decimal"/>
+  <xs:element name="size" type="xs:integer"/>
+  <xs:element name="filestatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="well-formed"/>
+        <xs:element ref="valid"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="message"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="well-formed" type="xs:boolean"/>
+  <xs:element name="valid" type="xs:boolean"/>
+  <xs:element name="message" type="xs:string"/>
+  <xs:element name="metadata">
+    <xs:complexType>
+      <xs:choice minOccurs="0">
+        <xs:element ref="document"/>
+        <xs:element ref="image"/>
+        <xs:element ref="text"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="document">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="oneEntryCompressedSize"/>
+          <xs:element ref="oneEntryUncompressedSize"/>
+        </xs:sequence>
+        <xs:element minOccurs="0" ref="pageCount"/>
+        <xs:element minOccurs="0" ref="words"/>
+        <xs:element minOccurs="0" ref="characters"/>
+        <xs:element minOccurs="0" ref="codePage"/>
+        <xs:element minOccurs="0" ref="paragraphs"/>
+        <xs:element minOccurs="0" ref="title"/>
+        <xs:element minOccurs="0" ref="author"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="isRightsManaged"/>
+          <xs:element ref="isProtected"/>
+        </xs:sequence>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="pageLayout"/>
+          <xs:element ref="language"/>
+        </xs:sequence>
+        <xs:element minOccurs="0" ref="documentTable"/>
+        <xs:choice minOccurs="0">
+          <xs:element ref="documentCell"/>
+          <xs:element ref="documentImage"/>
+          <xs:sequence>
+            <xs:element ref="description"/>
+            <xs:element ref="subject"/>
+            <xs:element ref="keywords"/>
+          </xs:sequence>
+        </xs:choice>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="isTagged"/>
+          <xs:element ref="hasOutline"/>
+          <xs:element ref="hasAnnotations"/>
+        </xs:sequence>
+        <xs:element minOccurs="0" ref="titleParts"/>
+        <xs:element minOccurs="0" ref="headParts"/>
+        <xs:choice minOccurs="0">
+          <xs:element ref="documentObject"/>
+          <xs:element ref="lastModifiedBy"/>
+          <xs:sequence>
+            <xs:element ref="oneEntryName"/>
+            <xs:element ref="packingMethod"/>
+          </xs:sequence>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="oneEntryCompressedSize" type="xs:integer"/>
+  <xs:element name="oneEntryUncompressedSize" type="xs:integer"/>
+  <xs:element name="pageCount" type="xs:integer"/>
+  <xs:element name="words" type="xs:integer"/>
+  <xs:element name="characters" type="xs:integer"/>
+  <xs:element name="codePage" type="xs:string"/>
+  <xs:element name="paragraphs" type="xs:integer"/>
+  <xs:element name="title" type="xs:string"/>
+  <xs:element name="author" type="xs:NCName"/>
+  <xs:element name="isRightsManaged" type="xs:NCName"/>
+  <xs:element name="isProtected" type="xs:NCName"/>
+  <xs:element name="pageLayout" type="xs:NCName"/>
+  <xs:element name="language" type="xs:NCName"/>
+  <xs:element name="documentTable" type="xs:integer"/>
+  <xs:element name="documentCell" type="xs:integer"/>
+  <xs:element name="documentImage" type="xs:integer"/>
+  <xs:element name="description" type="xs:string"/>
+  <xs:element name="subject" type="xs:string"/>
+  <xs:element name="keywords" type="xs:string"/>
+  <xs:element name="isTagged" type="xs:NCName"/>
+  <xs:element name="hasOutline" type="xs:NCName"/>
+  <xs:element name="hasAnnotations" type="xs:NCName"/>
+  <xs:element name="titleParts" type="xs:string"/>
+  <xs:element name="headParts" type="xs:string"/>
+  <xs:element name="documentObject" type="xs:integer"/>
+  <xs:element name="lastModifiedBy" type="xs:string"/>
+  <xs:element name="oneEntryName" type="xs:NCName"/>
+  <xs:element name="packingMethod" type="xs:string"/>
+  <xs:element name="image">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="compressionScheme"/>
+        <xs:element ref="imageWidth"/>
+        <xs:element ref="imageHeight"/>
+        <xs:choice minOccurs="0">
+          <xs:element ref="YCbCrSubSampling"/>
+          <xs:element ref="colorSpace"/>
+        </xs:choice>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="samplingFrequencyUnit"/>
+          <xs:element ref="xSamplingFrequency"/>
+          <xs:element ref="ySamplingFrequency"/>
+          <xs:element ref="bitsPerSample"/>
+        </xs:sequence>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="samplesPerPixel"/>
+          <xs:element ref="extraSamples"/>
+          <xs:element ref="byteOrder"/>
+        </xs:sequence>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="compressionScheme" type="xs:string"/>
+  <xs:element name="imageWidth" type="xs:integer"/>
+  <xs:element name="imageHeight" type="xs:integer"/>
+  <xs:element name="YCbCrSubSampling" type="xs:string"/>
+  <xs:element name="colorSpace" type="xs:NCName"/>
+  <xs:element name="samplingFrequencyUnit" type="xs:NCName"/>
+  <xs:element name="xSamplingFrequency" type="xs:decimal"/>
+  <xs:element name="ySamplingFrequency" type="xs:decimal"/>
+  <xs:element name="bitsPerSample" type="xs:string"/>
+  <xs:element name="samplesPerPixel" type="xs:integer"/>
+  <xs:element name="extraSamples" type="xs:string"/>
+  <xs:element name="byteOrder" type="xs:NCName"/>
+  <xs:element name="text">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice>
+          <xs:element ref="linebreak"/>
+          <xs:element ref="markupBasis"/>
+        </xs:choice>
+        <xs:element ref="charset"/>
+        <xs:element minOccurs="0" ref="markupBasisVersion"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="linebreak" type="xs:string"/>
+  <xs:element name="markupBasis" type="xs:NCName"/>
+  <xs:element name="charset" type="xs:NCName"/>
+  <xs:element name="markupBasisVersion" type="xs:decimal"/>
+  <xs:element name="identity">
+    <xs:complexType>
+      <xs:attribute name="extensions" use="required"/>
+      <xs:attribute name="filename"/>
+      <xs:attribute name="format" use="required"/>
+      <xs:attribute name="mime" use="required"/>
+      <xs:attribute name="puid" use="required"/>
+      <xs:attribute name="sha-1"/>
+      <xs:attribute name="sha-256"/>
+      <xs:attribute name="sha-512"/>
+      <xs:attribute name="version"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

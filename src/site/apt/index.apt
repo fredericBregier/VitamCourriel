@@ -1,0 +1,8 @@
+Vitam Tool
+
+  The Vitam Tool project contains a first set of tools to check and validate XML using various XSD, SCH, Schematron, ....
+
+Dependency
+
+  This project depends on fits, Jhove, Droid, MetadataExtractor NZ, Exiftool
+

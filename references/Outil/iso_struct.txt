@@ -1,0 +1,4 @@
+N-FICH	SYMB	POS-DEPA	LONG	POS-ARRI	TYP-DONN	NUM-INF
+iso-639-3_Name_Index_20120816.tab	Idcode	1			A.N.	
+iso-639-3_Name_Index_20120816.tab	Print_Name	2			A.N.	
+iso-639-3_Name_Index_20120816.tab	Inverted_Name	3			A.N.	

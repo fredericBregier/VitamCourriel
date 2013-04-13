@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ======================================================== -->
+<!-- ===== Code List: VersionsCode                 ===== -->
+<!-- ======================================================== -->
+<!--
+    Schema agency: Service interministériel des archives de France (SIAF)
+    Schema version: 1.0
+    Schema date: 06 Juillet 2012
+    
+    Copyright (c) 2011 Service interministériel des archives de France
+    
+    Ce document est sous licence Creative Commons Paternité 2.0 France.
+    Pour accéder à une copie de cette licence, merci de vous rendre à l'adresse suivante
+    http://creativecommons.org/licenses/by/2.0/fr/ ou envoyez un courrier à
+    Creative Commons, 444 Castro Street, Suite 900,
+    Mountain View, California, 94041, USA.
+-->
+
+<xsd:schema
+    attributeFormDefault="unqualified" 
+	elementFormDefault="qualified" 
+	targetNamespace="fr:gouv:culture:archivesdefrance:seda:v1.0" 
+	xmlns="fr:gouv:culture:archivesdefrance:seda:v1.0" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:ccts="urn:un:unece:uncefact:documentation:standard:CoreComponentsTechnicalSpecification:2"
+	version="1.0">
+    
+    
+    <!-- ====================================================================== -->
+    <!-- =====  Element Declarations				      ===== -->
+    <!-- ====================================================================== -->
+    <!-- =====  Root Element Declaration				      ===== -->
+    <!-- ====================================================================== -->
+    <xsd:element name="VersionsCode" type="VersionsCodeType"/>
+    <!-- ====================================================================== -->
+    <!-- ================ Type Definitions ============================= -->
+    <!-- =============================================================== -->
+    <!-- ===== Code List AppraisalCodeType: Appraisal Code         ===== -->
+    <!-- =============================================================== -->
+    
+    
+    <xsd:complexType name="VersionsCodeType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="fr">
+                <ccts:Name>Versions utilisées lors de la création du message SEDA</ccts:Name>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+        	<xsd:element name="PronomVersion" type="xsd:token"/>
+        	<xsd:element name="MIMEMediaTypeVersion" type="xsd:token"/>
+        	<xsd:element name="CharacterSetCodeVersion" type="xsd:token"/>
+        	<xsd:element name="ISO3AlphaCurrencyCodeVersion" type="xsd:token"/>
+        	<xsd:element name="AccessRestrictionVersion" type="xsd:token"/>
+        	<xsd:element name="AgencyIdentificationCodeVersion" type="xsd:token"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

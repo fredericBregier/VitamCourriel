@@ -330,7 +330,7 @@ public class ConfigLoader {
 
 			saveConfig();
 		}
-		String val = StaticValues.resourceToFile(StaticValues.DEFAULT_SCHEMATRON);
+		String val = StaticValues.resourceToFile(StaticValues.XSD2SCHEMA);
 		File file = new File(val);
 		BASE_RESOURCES = file.getParentFile().getParentFile().getParent();
 		Logger.getRootLogger().setLevel(Level.OFF);

@@ -50,12 +50,6 @@ public class StaticValues {
 	public static final String TRANSFORMER_FACTORY = "javax.xml.transform.TransformerFactory";
 	public static final String SAXON_TRANSFORMER_NAME = "net.sf.saxon.TransformerFactoryImpl";
 	public static final String XALAN_TRANSFORMER_NAME = "org.apache.xalan.processor.TransformerFactoryImpl";
-	// Xsd
-	public static final String DEFAULT_XSD = "/resources/seda/v10/seda_v1-0_archivetransfer.xsd";
-	// Schematron
-	public static final String DEFAULT_SCHEMATRON = "/resources/seda/seda_v10.sch";
-	// Xsl
-	public static final String DEFAULT_XSL = "/resources/seda/seda2ead-1.0.xsl";
 
 	// Fixed element
 	public static final String RESOURCES_LICENSE_TXT = "/resources/LICENSE.txt";
@@ -68,7 +62,6 @@ public class StaticValues {
 	public static final String EXTERNAL_SCHEMALOCATION = "http://apache.org/xml/properties/schema/external-schemaLocation";
 	public static final String HTTP_XML_ORG_SAX_FEATURES_VALIDATION = "http://xml.org/sax/features/validation";
 	public static final String XSD2SCHEMA = "/resources/schematron/xsd2schema.xsl";
-	public static final String DROID2XSD = "/resources/seda/DROID2SEDA_filetype.xsl";
 	public static final String XML_SHA1 = "http://www.w3.org/2000/09/xmldsig#sha1";
 	public static final String XML_SHA256 = "http://www.w3.org/2001/04/xmlenc#sha256";
 	public static final String XML_SHA512 = "http://www.w3.org/2001/04/xmlenc#sha512";

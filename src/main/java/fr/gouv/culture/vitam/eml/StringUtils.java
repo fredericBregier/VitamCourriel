@@ -17,9 +17,18 @@
  */
 package fr.gouv.culture.vitam.eml;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 import java.util.HashMap;
 
+import javax.mail.MessagingException;
 import javax.mail.internet.MimeUtility;
 
 /**
@@ -586,6 +595,59 @@ public class StringUtils {
 		for (FilteredCodeList code : FilteredCodeList.values()) {
 			htmlFilteredEntities.put("&"+code.name()+";", code.result);
 		}
+	}
+	
+	public static final String unescapeQuotedPrintable(String source, String charset) throws UnsupportedEncodingException, MessagingException {
+		ByteArrayInputStream in = new ByteArrayInputStream(source.getBytes());
+		InputStream decodedIn = MimeUtility.decode(in, "quoted-printable");
+		Writer writer = new StringWriter();
+        char[] buffer = new char[1024];
+        try {
+            Reader reader = null;
+            if (charset != null) {
+            	reader = new BufferedReader(new InputStreamReader(decodedIn, charset));
+            } else {
+            	reader = new BufferedReader(new InputStreamReader(decodedIn));
+            }
+            int n;
+            while ((n = reader.read(buffer)) != -1) {
+                writer.write(buffer, 0, n);
+            }
+        } catch (IOException e) {
+			if (decodedIn != null) {
+				try {
+					decodedIn.close();
+				} catch (IOException e1) {
+				}
+			}
+			try {
+				in.close();
+			} catch (IOException e1) {
+			}
+			try {
+				writer.close();
+			} catch (IOException e1) {
+			}
+		} finally {
+            try {
+				decodedIn.close();
+			} catch (IOException e) {
+			}
+            try {
+				in.close();
+			} catch (IOException e) {
+			}
+            try {
+				writer.flush();
+			} catch (IOException e) {
+			}
+            try {
+				writer.close();
+			} catch (IOException e) {
+			}
+        }
+        String out = writer.toString();
+        return out;
 	}
 
 	private static final String DELIM = "=?";

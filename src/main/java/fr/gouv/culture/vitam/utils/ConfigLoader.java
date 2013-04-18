@@ -113,6 +113,11 @@ public class ConfigLoader {
 	// Metadata extraction
 	public int rankLimit = 1;
 	public int wordLimit = 100;
+
+	// Export configuration
+	public boolean extractFile = false; // XXX FIXME true;
+	public String outputDir = "C:\\";// XXX FIXME new File("J:/Temp/test/testdoc/emails/output");
+	
 	
 	public String addRankId(Element root) {
 		String id = Long.toString(nbDoc.incrementAndGet());
@@ -193,6 +198,8 @@ public class ConfigLoader {
 		lowLimitMs = getProperty(properties, "vitam.lowlimitms", 60000);
 		wordLimit = getProperty(properties, "vitam.wordlimit", 100);
 		rankLimit = getProperty(properties, "vitam.ranklimit", 1);
+		extractFile = getProperty(properties, "vitam.export", 1) == 1;
+		outputDir = getProperty(properties, "vitam.exportdir", outputDir);
 	}
 
 	public void setProperties(Properties properties) {
@@ -238,6 +245,8 @@ public class ConfigLoader {
 		lowLimitMs = getProperty(properties, "vitam.lowlimitms", lowLimitMs);
 		wordLimit = getProperty(properties, "vitam.wordlimit", wordLimit);
 		rankLimit = getProperty(properties, "vitam.ranklimit", rankLimit);
+		extractFile = getProperty(properties, "vitam.export", extractFile ? 1 : 0) == 1;
+		outputDir = getProperty(properties, "vitam.exportdir", outputDir);
 	}
 
 	public boolean saveConfig() {
@@ -327,7 +336,8 @@ public class ConfigLoader {
 			lowLimitMs = SystemPropertyUtil.getAndSetInt("vitam.lowlimitms", 60000);
 			wordLimit = SystemPropertyUtil.getAndSetInt("vitam.wordlimit", 100);
 			rankLimit = SystemPropertyUtil.getAndSetInt("vitam.ranklimit", 1);
-
+			extractFile = SystemPropertyUtil.getAndSetInt("vitam.export", 1) == 1;
+			outputDir = SystemPropertyUtil.getAndSet("vitam.exportdir", outputDir);
 			saveConfig();
 		}
 		String val = StaticValues.resourceToFile(StaticValues.XSD2SCHEMA);
@@ -348,7 +358,6 @@ public class ConfigLoader {
 
 			// Init Signature
 			DroidHandler.initialize(signatureFile, containerSignatureFile, -1);
-
 			// Prepare command
 			droidHandler = new DroidHandler();
 		}

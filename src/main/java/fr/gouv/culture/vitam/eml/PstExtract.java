@@ -125,22 +125,32 @@ public class PstExtract {
 		System.out.println("Start PST: "+ (new Date().toString()));
 		PstExtract extract = new PstExtract(pstFile.getAbsolutePath(), argument, config);
 		PSTFolder folder = null;
+		File oldDir = argument.currentOutputDir;
 		try {
 			PSTFile pstFile2 = new PSTFile(extract.filename);
 			System.out.println(pstFile2.getMessageStore().getDisplayName());
 			extract.currentRoot = extract.pstRoot;
 			extract.currentRoot.addAttribute(EMAIL_FIELDS.filename.name, pstFile.getPath());
 			// XXX FIXME multiple output
-			if (argument.extractFile) {
-				extract.curPath = new File(argument.outputDir, "PST_"+pstFile.getName());
+			if (argument.currentOutputDir == null) {
+				if (config.outputDir != null) {
+					argument.currentOutputDir = new File(config.outputDir);
+				} else {
+					argument.currentOutputDir = new File(pstFile.getParentFile().getAbsolutePath());
+				}
+			}
+			if (config.extractFile) {
+				extract.curPath = new File(argument.currentOutputDir, "PST_"+pstFile.getName());
 				extract.curPath.mkdirs();
 			} else if (extractSeparateXmlFolder) {
-				extract.curPath = new File(pstFile.getParentFile(), "PST_"+pstFile.getName());
+				extract.curPath = new File(argument.currentOutputDir, "PST_"+pstFile.getName());
 				extract.curPath.mkdirs();
 			}
+			argument.currentOutputDir = extract.curPath;
 			folder = pstFile2.getRootFolder();
 		} catch (Exception err) {
 			err.printStackTrace();
+			argument.currentOutputDir = oldDir;
 			return null;
 		}
 		if (extractSeparateXmlFolder) {
@@ -154,6 +164,7 @@ public class PstExtract {
 		DroidHandler.cleanTempFiles();
 		extract.currentRoot.addAttribute("nbMsg", config.nbDoc.toString());
 		System.out.println("Stop PST: "+ (new Date().toString()));
+		argument.currentOutputDir = oldDir;
 		return extract.pstRoot;
 	}
 
@@ -179,10 +190,11 @@ public class PstExtract {
 					Element nextdepth = XmlDom.factory.createElement(EMAIL_FIELDS.folder.name);
 					nextdepth.addAttribute(EMAIL_FIELDS.folderName.name, childFolder.getDisplayName());
 					File pastDir = curPath;
-					if (argument.extractFile || (extractSeparateXmlFolder && writer != null)) {
+					if (config.extractFile || (extractSeparateXmlFolder && writer != null)) {
 						// XXX FIXME multiple output
 						curPath = new File(curPath, childFolder.getDisplayName());
 						curPath.mkdir();
+						argument.currentOutputDir = curPath;
 						nextdepth.addAttribute(EMAIL_FIELDS.folderFile.name, curPath.getPath());
 					}
 					currentRoot = nextdepth;
@@ -220,6 +232,7 @@ public class PstExtract {
 					// XXX FIXME if multiple files as output => curPath + metadata.xml = 
 					// currentRoot to duplicate (single node) and detach to save
 					curPath = pastDir;
+					argument.currentOutputDir = curPath;
 					currentRoot = curdepth;
 				}
 			} catch (PSTException e) {
@@ -295,7 +308,7 @@ public class PstExtract {
 					attachmentStream = attachment.getFileInputStream();
 					String tempfilename = filename.isEmpty() ? (config.nbDoc.get()+1)+"_unknownAttachment.eml" : filename;
 					// Force out as eml
-					if (argument.extractFile) {
+					if (config.extractFile) {
 						filetemp = new File(curPath, tempfilename);
 					} else {
 						filetemp = File.createTempFile(StaticValues.PREFIX_TEMPFILE, tempfilename);
@@ -350,7 +363,7 @@ public class PstExtract {
 						return "";
 					}
 					// then clear
-					if (! argument.extractFile) {
+					if (! config.extractFile) {
 						filetemp.delete();
 					}
 				} catch (IOException e) {
@@ -372,7 +385,7 @@ public class PstExtract {
 					identification.add(newElt);
 					return "";
 				} finally {
-					if (filetemp != null && ! argument.extractFile) {
+					if (filetemp != null && ! config.extractFile) {
 						filetemp.delete();
 					}
 					if (out != null) {
@@ -1255,10 +1268,11 @@ public class PstExtract {
 		Element identification = null;
 		if (Attachments) {
 			File oldPath = curPath;
-			if (argument.extractFile) {
+			if (config.extractFile) {
 				File newDir = new File(curPath, id);
 				newDir.mkdir();
 				curPath = newDir;
+				argument.currentOutputDir = curPath;
 			}
 			identification = XmlDom.factory.createElement(EMAIL_FIELDS.attachments.name);
 			// get the number of attachments for this message
@@ -1280,10 +1294,11 @@ public class PstExtract {
 				}
 			}
 			curPath = oldPath;
+			argument.currentOutputDir = curPath;
 		}
 		// Plain text e-mail body
 		String body = "";
-		if (argument.extractKeyword || argument.extractFile) {
+		if (argument.extractKeyword || config.extractFile) {
 			body = email.getBody();
 			boolean isTxt = true;
 			boolean isHttp = false;
@@ -1303,12 +1318,15 @@ public class PstExtract {
 				}
 			}
 			if (body != null && ! body.isEmpty()) {
-				if (argument.extractFile) {
+				if (config.extractFile) {
 					// XXX FIXME could saved email from HTML Body (clearer) if possible
 					// use curRank in name, and attachment will be under directory named
 					// add currank in field
 					File newDir = new File(curPath, id);
 					newDir.mkdir();
+					File oldPath = curPath;
+					curPath = newDir;
+					argument.currentOutputDir = curPath;
 					String filenamebody = InternetMessageId;
 					if (filenamebody == null || ! filenamebody.isEmpty()) {
 						filenamebody = id;
@@ -1390,6 +1408,8 @@ public class PstExtract {
 						}
 						rtf = null;
 					}
+					curPath = oldPath;
+					argument.currentOutputDir = curPath;
 				}
 			}
 		}

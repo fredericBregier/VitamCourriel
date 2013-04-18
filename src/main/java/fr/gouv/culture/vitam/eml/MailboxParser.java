@@ -256,11 +256,22 @@ public class MailboxParser {
 		MailboxParser parser = new MailboxParser();
 		parser.argument = argument;
 		parser.config = config;
-		if (argument.extractFile) {
-			parser.curPath = new File(mboxFile.getParentFile(), "MBOX_"+mboxFile.getName());
-			parser.curPath.mkdirs();
+		File oldDir = argument.currentOutputDir;
+		if (argument.currentOutputDir == null) {
+			if (config.outputDir != null) {
+				argument.currentOutputDir = new File(config.outputDir);
+			} else {
+				argument.currentOutputDir = new File(mboxFile.getParentFile().getAbsolutePath());
+			}
 		}
-		return parser.extractInfoMbox(mboxFile, root);
+		if (config.extractFile) {
+			parser.curPath = new File(argument.currentOutputDir, "MBOX_"+mboxFile.getName());
+			parser.curPath.mkdirs();
+			argument.currentOutputDir = parser.curPath;
+		}
+		Element res = parser.extractInfoMbox(mboxFile, root);
+		argument.currentOutputDir = oldDir;
+		return res;
 	}
 	
 	private Element extractInfoMbox(File mboxFile, Element root) {
@@ -381,11 +392,20 @@ public class MailboxParser {
 						emlroot.add(identification);
 						EmlExtract.extractInfoMessage(message, emlroot, argument, config);
 						root.add(emlroot);
-						if (argument.extractFile) {
+						/*
+						if (config.extractFile) {
+							File old = argument.currentOutputDir;
 							String id = emlroot.attributeValue(EMAIL_FIELDS.rankId.name);
+							if (config.extractFile) {
+								File newOutDir = new File(argument.currentOutputDir, id);
+								newOutDir.mkdirs();
+								argument.currentOutputDir = newOutDir;
+							}
 							// XXX FIXME should write rawMessageText to eml file using id+"_"+message.getSubject()+".eml"
 							System.out.println("should write rawMessageText to eml file using "+id+" and subdir .eml");
+							argument.currentOutputDir = old;
 						}
+						*/
 					}
 				} else {
 					if (debug)

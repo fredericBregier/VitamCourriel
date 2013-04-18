@@ -120,11 +120,19 @@ public class MsgExtract2 {
 	 */
 	public static Element extractInfoEmail(File msgFile, String filename, VitamArgument argument,
 			ConfigLoader config) {
+		File oldDir = argument.currentOutputDir;
+		if (argument.currentOutputDir == null) {
+			if (config.outputDir != null) {
+				argument.currentOutputDir = new File(config.outputDir);
+			} else {
+				argument.currentOutputDir = new File(msgFile.getParentFile().getAbsolutePath());
+			}
+		}
 		Element root = XmlDom.factory.createElement(EMAIL_FIELDS.formatMSG.name);
 		try {
 			//System.out.println("msg: "+msgFile.getAbsolutePath());
 			MAPIMessage msg = new MAPIMessage(msgFile.getAbsolutePath());
-			extractInfoSubEmail(msg, msgFile.getParentFile(), root, argument, config);
+			extractInfoSubEmail(msg, argument.currentOutputDir, root, argument, config);
 		} catch (UnsupportedOperationException e) {
 			System.err.println(StaticValues.LBL.error_error.get() + e.toString());
 			e.printStackTrace();
@@ -136,6 +144,7 @@ public class MsgExtract2 {
 			String status = "Error during identification";
 			root.addAttribute(EMAIL_FIELDS.status.name, status);
 		}
+		argument.currentOutputDir = oldDir;
 		return root;
 	}
 
@@ -490,7 +499,7 @@ public class MsgExtract2 {
 		Element identification = null;
 		if (Attachments) {
 			File oldPath = curPath;
-			if (argument.extractFile) {
+			if (config.extractFile) {
 				File newDir = new File(curPath, id);
 				newDir.mkdir();
 				curPath = newDir;
@@ -515,7 +524,7 @@ public class MsgExtract2 {
 		}
 		// Plain text e-mail body
 		String body = "";
-		if (argument.extractKeyword || argument.extractFile) {
+		if (argument.extractKeyword || config.extractFile) {
 			try {
 				body = msg.getTextBody();
 			} catch (ChunkNotFoundException e2) {
@@ -544,7 +553,7 @@ public class MsgExtract2 {
 				}
 			}
 			if (body != null && !body.isEmpty()) {
-				if (argument.extractFile) {
+				if (config.extractFile) {
 					// XXX FIXME could saved email from HTML Body (clearer) if possible
 					// use curRank in name, and attachment will be under directory named
 					// add currank in field
@@ -677,7 +686,7 @@ public class MsgExtract2 {
 			String tempfilename = filename.isEmpty() ? (config.nbDoc.get() + 1)
 					+ "_unknownAttachment.msg" : filename;
 			// Force out as eml
-			if (argument.extractFile) {
+			if (config.extractFile) {
 				filetemp = new File(curPath, tempfilename);
 			} else {
 				filetemp = File.createTempFile(StaticValues.PREFIX_TEMPFILE, tempfilename);
@@ -724,7 +733,7 @@ public class MsgExtract2 {
 				return "";
 			}
 			// then clear
-			if (!argument.extractFile) {
+			if (!config.extractFile) {
 				filetemp.delete();
 			}
 		} catch (IOException e) {
@@ -737,7 +746,7 @@ public class MsgExtract2 {
 			identification.add(newElt);
 			return "";
 		} finally {
-			if (filetemp != null && !argument.extractFile) {
+			if (filetemp != null && !config.extractFile) {
 				filetemp.delete();
 			}
 			if (out != null) {

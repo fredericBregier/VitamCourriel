@@ -543,6 +543,7 @@ public class VitamGui extends JFrame implements PropertyChangeListener {
 									int nb = initDirectoryListing(directory);
 									if (nb > 0) {
 										config.nbDocument = nb;
+										System.out.println("start for #items "+nb);
 										if (directory.isFile()) {
 											config.lastScannedDirectory = directory.getParentFile();
 										} else {
@@ -924,6 +925,7 @@ public class VitamGui extends JFrame implements PropertyChangeListener {
 			vitamResult = null;
 		} catch (CommandExecutionException e) {
 			System.err.println(StaticValues.LBL.error_initdroid.get() + e.toString());
+			e.printStackTrace();
 			vitamResult = null;
 			return;
 		}
@@ -931,6 +933,7 @@ public class VitamGui extends JFrame implements PropertyChangeListener {
 			config.initFits();
 		} catch (CommandExecutionException e) {
 			System.err.println(StaticValues.LBL.error_initdroid.get() + e.toString());
+			e.printStackTrace();
 			vitamResult = null;
 			return;
 		}

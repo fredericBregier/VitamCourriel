@@ -398,7 +398,7 @@ public class MsgExtract {
 			
 			// Plain text e-mail body
 			String body = "";
-			if (argument.extractKeyword || argument.extractFile) {
+			if (argument.extractKeyword || config.extractFile) {
 				body = msg.getBodyText();
 				boolean isTxt = true;
 				boolean isHttp = false;
@@ -412,7 +412,7 @@ public class MsgExtract {
 					}
 				}
 				if (body != null && ! body.isEmpty()) {
-					if (argument.extractFile) {
+					if (config.extractFile) {
 						// XXX FIXME could saved email from HTML Body (clearer) if possible
 						// use curRank in name, and attachment will be under directory named
 						// add currank in field
@@ -502,7 +502,7 @@ public class MsgExtract {
 			
 			if (atts != null && ! atts.isEmpty()) {
 				File oldPath = curPath;
-				if (argument.extractFile) {
+				if (config.extractFile) {
 					File newDir = curPath;
 					newDir.mkdir();
 					curPath = newDir;
@@ -585,7 +585,7 @@ public class MsgExtract {
 		try {
 			String tempfilename = filename.isEmpty() ? (config.nbDoc.get()+1)+"_unknownAttachment.eml" : filename;
 			// Force out as eml
-			if (argument.extractFile) {
+			if (config.extractFile) {
 				filetemp = new File(curPath, tempfilename);
 			} else {
 				filetemp = File.createTempFile(StaticValues.PREFIX_TEMPFILE, tempfilename);
@@ -630,7 +630,7 @@ public class MsgExtract {
 				return "";
 			}
 			// then clear
-			if (! argument.extractFile) {
+			if (! config.extractFile) {
 				filetemp.delete();
 			}
 		} catch (IOException e) {
@@ -643,7 +643,7 @@ public class MsgExtract {
 			identification.add(newElt);
 			return "";
 		} finally {
-			if (filetemp != null && ! argument.extractFile) {
+			if (filetemp != null && ! config.extractFile) {
 				filetemp.delete();
 			}
 			if (out != null) {

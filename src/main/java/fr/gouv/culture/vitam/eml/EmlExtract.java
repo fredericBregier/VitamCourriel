@@ -119,6 +119,15 @@ public class EmlExtract {
 	 */
 	public static Element extractInfoEmail(File emlFile, String filename, VitamArgument argument,
 			ConfigLoader config) {
+		File oldDir = argument.currentOutputDir;
+		if (argument.currentOutputDir == null) {
+			if (config.outputDir != null) {
+				argument.currentOutputDir = new File(config.outputDir);
+			} else {
+				argument.currentOutputDir = new File(emlFile.getParentFile().getAbsolutePath());
+			}
+		}
+
 		MimeMessage message = null;
 		try {
 			message = createOneMessageFromFile(emlFile);
@@ -137,16 +146,21 @@ public class EmlExtract {
 		}
 		Element root = XmlDom.factory.createElement(EMAIL_FIELDS.formatEML.name);
 		extractInfoMessage(message, root, argument, config);
+		argument.currentOutputDir = oldDir;
 		return root;
 	}
 	public static String extractInfoMessage(MimeMessage message, Element root, VitamArgument argument,
 			ConfigLoader config) {
+		File oldDir = argument.currentOutputDir;
+		if (argument.currentOutputDir == null) {
+			if (config.outputDir != null) {
+				argument.currentOutputDir = new File(config.outputDir);
+			}
+		}
 		Element keywords = XmlDom.factory.createElement(EMAIL_FIELDS.keywords.name);
 		Element metadata = XmlDom.factory.createElement(EMAIL_FIELDS.metadata.name);
 		String skey = "";
-		config.addRankId(root);
-		//String id = Long.toString(config.nbDoc.incrementAndGet());
-		//root.addAttribute(EMAIL_FIELDS.rankId.name, id);
+		String id = config.addRankId(root);
 		Address[] from = null;
 		Element sub2 = null;
 		try {
@@ -516,8 +530,14 @@ public class EmlExtract {
 				prop.addAttribute(EMAIL_FIELDS.sensitivity.name, headers[0]);
 			}
 			try {
+				File old = argument.currentOutputDir;
+				if (config.extractFile) {
+					File newOutDir = new File(argument.currentOutputDir, id);
+					newOutDir.mkdirs();
+					argument.currentOutputDir = newOutDir;
+				}
 				if (argument.extractKeyword) {
-					skey = handleMessage(message, metadata, prop, argument, config);
+					skey = handleMessage(message, metadata, prop, id, argument, config);
 					// should have hasAttachment
 					if (prop.hasContent()) {
 						metadata.add(prop);
@@ -530,7 +550,7 @@ public class EmlExtract {
 						root.add(keywords);
 					}
 				} else {
-					handleMessage(message, metadata, prop, argument, config);
+					handleMessage(message, metadata, prop, id, argument, config);
 					// should have hasAttachment
 					if (prop.hasContent()) {
 						metadata.add(prop);
@@ -539,6 +559,7 @@ public class EmlExtract {
 						root.add(metadata);
 					}
 				}
+				argument.currentOutputDir = old;
 			} catch (IOException e) {
 				System.err.println(StaticValues.LBL.error_error.get() + e.toString());
 			}
@@ -559,6 +580,7 @@ public class EmlExtract {
 			String status = "Error during identification";
 			root.addAttribute(EMAIL_FIELDS.status.name, status);
 		}
+		argument.currentOutputDir = oldDir;
 		return skey;
 	}
 
@@ -572,19 +594,100 @@ public class EmlExtract {
         return new MimeMessage(session, source);
 	}
 	
-	private static final String handleMessage(Message message, Element metadata, Element prop, VitamArgument argument, ConfigLoader config) throws IOException, MessagingException {
+	private static final String[] extractContentType(String contentType, String contentTypeEncoding) {
+		String charset = null;
+		int pos = contentType.indexOf(';');
+		if (pos > 0) {
+			charset = contentType.substring(pos+1).trim();
+			contentType = contentType.substring(0, pos).trim();
+			pos = charset.indexOf("charset=");
+			if (pos >= 0) {
+				charset = charset.substring(pos);
+				charset = charset.replace("charset=", "").trim();
+				pos = charset.indexOf(';');
+				if (pos > 0) {
+					charset = charset.substring(0, pos).trim();
+				}
+				if (charset.startsWith("\"")) {
+					pos = charset.indexOf('\"', 1);
+					if (pos > 0) {
+						charset = charset.substring(1, pos).trim();
+					}
+				}
+			} else {
+				charset = null;
+			}
+		}
+		String [] result = new String[4];
+		result[0] = contentType;
+		result[1] = charset;
+		result[2] = contentTypeEncoding;
+		if ("text/plain".equals(contentType)) {
+			result[3] = ".txt";
+		} else if ("text/html".equals(contentType)) {
+			result[3] = ".html";
+		} else {
+			result[3] = ".unknown";
+		}
+		//System.out.println(contentType+":"+charset+":"+contentTypeEncoding+":"+result[3]);
+		return result;
+	}
+	
+	private static final String saveBody(String content, String []aresult, String id, VitamArgument argument, ConfigLoader config) throws MessagingException, IOException {
+		String tosave = null;
+		if (config.extractFile) {
+			FileOutputStream outputStream = new FileOutputStream(new File(argument.currentOutputDir, id+"_body"+aresult[3]));
+			if (aresult[2] != null && aresult[2].equals("quoted-printable")) {
+				tosave = StringUtils.unescapeQuotedPrintable((String) content, aresult[1]);
+			} else {
+				if (aresult[1] != null) {
+					tosave = new String(((String) content).getBytes(), aresult[1]);
+				} else {
+					tosave = ((String) content);
+				}
+			}
+			outputStream.write(tosave.getBytes(StaticValues.CURRENT_OUTPUT_ENCODING));
+			outputStream.flush();
+			outputStream.close();
+		} else if (argument.extractKeyword) {
+			if (aresult[2].equals("quoted-printable")) {
+				tosave = StringUtils.unescapeQuotedPrintable((String) content, aresult[1]);
+			} else {
+				if (aresult[1] != null) {
+					tosave = new String(((String) content).getBytes(), aresult[1]);
+				} else {
+					tosave = ((String) content);
+				}
+			}
+		}
+		return tosave;
+	}
+	
+	private static final String handleMessage(Message message, Element metadata, Element prop, String id,
+			VitamArgument argument, ConfigLoader config) throws IOException, MessagingException {
 		Object content = message.getContent();
+		String [] cte = message.getHeader("Content-Transfer-Encoding");
+		String [] aresult = null;
+		if (cte != null && cte.length > 0) {
+			aresult = extractContentType(message.getContentType(), cte[0]);
+		} else {
+			aresult = extractContentType(message.getContentType(), null);
+		}
 		String result = "";
 		if (content instanceof String) {
-			if (argument.extractKeyword) {
-				result = (String) content;
+			Element body = XmlDom.factory.createElement("body");
+			body.addAttribute("mime", aresult[0]);
+			if (aresult[1] != null) {
+				body.addAttribute("charset", aresult[1]);
 			}
+			metadata.add(body);
+			result = saveBody((String) content, aresult, id, argument, config);
 		} else if (content instanceof Multipart) {
 			// handle multi part
 			prop.addAttribute(EMAIL_FIELDS.hasAttachment.name, "true");
 			Multipart mp = (Multipart) content;
 			Element identification = XmlDom.factory.createElement(EMAIL_FIELDS.attachments.name);
-			String value = handleMultipart(mp, identification, argument, config);
+			String value = handleMultipart(mp, identification, id, argument, config);
 			if (identification.hasContent()) {
 				metadata.add(identification);
 			}
@@ -595,7 +698,8 @@ public class EmlExtract {
 		return result;
 	}
 
-	private static final String handleMultipart(Multipart mp, Element identification, VitamArgument argument, ConfigLoader config) throws MessagingException, IOException {
+	private static final String handleMultipart(Multipart mp, Element identification, String id,
+			VitamArgument argument, ConfigLoader config) throws MessagingException, IOException {
 		int count = mp.getCount();
 		String result = "";
 		identification.addAttribute(EMAIL_FIELDS.attNumber.name, Integer.toString(count-1));
@@ -604,9 +708,27 @@ public class EmlExtract {
 			
 			Object content = bp.getContent();
 			if (content instanceof String) {
-				if (argument.extractKeyword) {
-					result += " " + (String) content;
+				String [] cte = bp.getHeader("Content-Transfer-Encoding");
+				String [] aresult = null;
+				if (cte != null && cte.length > 0) {
+					aresult = extractContentType(bp.getContentType(), cte[0]);
+				} else {
+					aresult = extractContentType(bp.getContentType(), null);
 				}
+				Element emlroot = XmlDom.factory.createElement("body");
+				// <identity format="Internet Message Format" mime="message/rfc822" puid="fmt/278" extensions="eml"/>
+				Element subidenti = XmlDom.factory.createElement("identification");
+				Element identity = XmlDom.factory.createElement("identity");
+				identity.addAttribute("format", "Internet Message Body Format");
+				identity.addAttribute("mime", aresult[0] != null ? aresult[0] : "unknown");
+				identity.addAttribute("extensions", aresult[3] != null ? aresult[3].substring(1) : "unknown");
+				if (aresult[1] != null) {
+					identity.addAttribute("charset", aresult[1]);
+				}
+				identification.add(identity);
+				emlroot.add(subidenti);
+				identification.add(emlroot);
+				result += " " + saveBody((String) content, aresult, id, argument, config);
 			} else if (content instanceof InputStream) {
 				// handle input stream
 				if (argument.extractKeyword) {
@@ -633,14 +755,13 @@ public class EmlExtract {
 					result += " " + extractInfoMessage((MimeMessage) message, emlroot, argument, config);
 				} else {
 					extractInfoMessage((MimeMessage) message, emlroot, argument, config);
-					//handleMessageRecur(message, identification, argument, config);
 				}
 			} else if (content instanceof Multipart) {
 				Multipart mp2 = (Multipart) content;
 				if (argument.extractKeyword) {
-					result += " " + handleMultipartRecur(mp2, identification, argument, config);
+					result += " " + handleMultipartRecur(mp2, identification, id+"_"+i, argument, config);
 				} else {
-					handleMultipartRecur(mp2, identification, argument, config);
+					handleMultipartRecur(mp2, identification, id+"_"+i, argument, config);
 				}
 			}
 		}
@@ -694,7 +815,11 @@ public class EmlExtract {
 		FileOutputStream outputStream = null;
 		try {
 			// Force out to analysis
-			filetemp = File.createTempFile(StaticValues.PREFIX_TEMPFILE, filename);
+			if (config.extractFile) {
+				filetemp = new File(argument.currentOutputDir, filename);
+			} else {
+				filetemp = File.createTempFile(StaticValues.PREFIX_TEMPFILE, filename);
+			}
 			byte [] buffer = new byte[8192];
 			int read = 0;
 			outputStream = new FileOutputStream(filetemp);
@@ -704,7 +829,7 @@ public class EmlExtract {
 			outputStream.close();
 			outputStream = null;
 		} catch (IOException e1) {
-			if (filetemp != null) {
+			if (filetemp != null && ! config.extractFile) {
 				filetemp.delete();
 			}
 			if (outputStream != null) {
@@ -749,43 +874,79 @@ public class EmlExtract {
 			config.addRankId(newElt);
 			newElt.addAttribute(EMAIL_FIELDS.status.name, status);
 		}
-		if (filetemp != null) {
+		if (filetemp != null && ! config.extractFile) {
 			filetemp.delete();
 		}
 		identification.add(newElt);
 		return result;
 	}
 	
-	private static final String handleMessageRecur(Message message, Element identification, VitamArgument argument, ConfigLoader config) throws IOException, MessagingException {
+	private static final String handleMessageRecur(Message message, Element identification, String id, VitamArgument argument, ConfigLoader config) throws IOException, MessagingException {
 		Object content = message.getContent();
 		String result = "";
 		if (content instanceof String) {
-			if (argument.extractKeyword) {
-				result = (String) content;
+			String [] cte = message.getHeader("Content-Transfer-Encoding");
+			String [] aresult = null;
+			if (cte != null && cte.length > 0) {
+				aresult = extractContentType(message.getContentType(), cte[0]);
+			} else {
+				aresult = extractContentType(message.getContentType(), null);
 			}
+			Element emlroot = XmlDom.factory.createElement("body");
+			// <identity format="Internet Message Format" mime="message/rfc822" puid="fmt/278" extensions="eml"/>
+			Element subidenti = XmlDom.factory.createElement("identification");
+			Element identity = XmlDom.factory.createElement("identity");
+			identity.addAttribute("format", "Internet Message Body Format");
+			identity.addAttribute("mime", aresult[0] != null ? aresult[0] : "unknown");
+			identity.addAttribute("extensions", aresult[3] != null ? aresult[3].substring(1) : "unknown");
+			if (aresult[1] != null) {
+				identity.addAttribute("charset", aresult[1]);
+			}
+			identification.add(identity);
+			emlroot.add(subidenti);
+			identification.add(emlroot);
+			result += " " + saveBody((String) content, aresult, id, argument, config);
 			// ignore string
 		} else if (content instanceof Multipart) {
 			Multipart mp = (Multipart) content;
 			if (argument.extractKeyword) {
-				result = handleMultipartRecur(mp, identification, argument, config);
+				result = handleMultipartRecur(mp, identification, id, argument, config);
 			} else {
-				handleMultipartRecur(mp, identification, argument, config);
+				handleMultipartRecur(mp, identification, id, argument, config);
 			}
 			// handle multi part
 		}
 		return result;
 	}
 
-	private static final String handleMultipartRecur(Multipart mp, Element identification, VitamArgument argument, ConfigLoader config) throws MessagingException, IOException {
+	private static final String handleMultipartRecur(Multipart mp, Element identification, String id, VitamArgument argument, ConfigLoader config) throws MessagingException, IOException {
 		int count = mp.getCount();
 		String result = "";
 		for (int i = 0; i < count; i++) {
 			BodyPart bp = mp.getBodyPart(i);
 			Object content = bp.getContent();
 			if (content instanceof String) {
-				if (argument.extractKeyword) {
-					result += " "+ (String) content;
+				String [] cte = bp.getHeader("Content-Transfer-Encoding");
+				String [] aresult = null;
+				if (cte != null && cte.length > 0) {
+					aresult = extractContentType(bp.getContentType(), cte[0]);
+				} else {
+					aresult = extractContentType(bp.getContentType(), null);
 				}
+				Element emlroot = XmlDom.factory.createElement("body");
+				// <identity format="Internet Message Format" mime="message/rfc822" puid="fmt/278" extensions="eml"/>
+				Element subidenti = XmlDom.factory.createElement("identification");
+				Element identity = XmlDom.factory.createElement("identity");
+				identity.addAttribute("format", "Internet Message Body Format");
+				identity.addAttribute("mime", aresult[0] != null ? aresult[0] : "unknown");
+				identity.addAttribute("extensions", aresult[3] != null ? aresult[3].substring(1) : "unknown");
+				if (aresult[1] != null) {
+					identity.addAttribute("charset", aresult[1]);
+				}
+				identification.add(identity);
+				emlroot.add(subidenti);
+				identification.add(emlroot);
+				result += " " + saveBody((String) content, aresult, id, argument, config);
 				// ignore string
 			} else if (content instanceof InputStream) {
 				// handle input stream
@@ -797,16 +958,16 @@ public class EmlExtract {
 			} else if (content instanceof Message) {
 				Message message = (Message) content;
 				if (argument.extractKeyword) {
-					result += " "+ handleMessageRecur(message, identification, argument, config);
+					result += " "+ handleMessageRecur(message, identification, id+"_"+i, argument, config);
 				} else {
-					handleMessageRecur(message, identification, argument, config);
+					handleMessageRecur(message, identification, id+"_"+i, argument, config);
 				}
 			} else if (content instanceof Multipart) {
 				Multipart mp2 = (Multipart) content;
 				if (argument.extractKeyword) {
-					result += " "+ handleMultipartRecur(mp2, identification, argument, config);
+					result += " "+ handleMultipartRecur(mp2, identification, id+"_"+i, argument, config);
 				} else {
-					handleMultipartRecur(mp2, identification, argument, config);
+					handleMultipartRecur(mp2, identification, id+"_"+i, argument, config);
 				}
 			}
 		}

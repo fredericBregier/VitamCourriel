@@ -91,7 +91,8 @@ public class VitamConfigDialog extends JPanel {
 	private JFormattedTextField wordlimit;
 	private JCheckBox chckbxUpdateConfigurationFile;
 	private JCheckBox chckbxExtractKeywords;
-	
+	private JTextField outputDirField;
+	private JCheckBox chckbxExtractEmlBody;
 	/**
 	 * @param frame the parent frame
 	 * @param vitamGui the VitamGui associated
@@ -665,9 +666,9 @@ public class VitamConfigDialog extends JPanel {
 		tabbedPane.addTab("Output", null, outputPanel, null);
 		GridBagLayout gbl_outputPanel = new GridBagLayout();
 		gbl_outputPanel.columnWidths = new int[] { 0, 0, 0, 0 };
-		gbl_outputPanel.rowHeights = new int[] { 0, 0, 0, 0, 0, 0 };
-		gbl_outputPanel.columnWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		gbl_outputPanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_outputPanel.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+		gbl_outputPanel.columnWeights = new double[] { 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gbl_outputPanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		outputPanel.setLayout(gbl_outputPanel);
 
 		JLabel lblFormatOutput = new JLabel("Format Output");
@@ -706,11 +707,41 @@ public class VitamConfigDialog extends JPanel {
 		
 		chckbxProposeFileSave = new JCheckBox("Propose File Save (XML only and best on Single XML)");
 		GridBagConstraints gbc_chckbxProposeFileSave = new GridBagConstraints();
+		gbc_chckbxProposeFileSave.insets = new Insets(0, 0, 5, 0);
 		gbc_chckbxProposeFileSave.gridwidth = 2;
-		gbc_chckbxProposeFileSave.insets = new Insets(0, 0, 0, 5);
 		gbc_chckbxProposeFileSave.gridx = 1;
 		gbc_chckbxProposeFileSave.gridy = 4;
 		outputPanel.add(chckbxProposeFileSave, gbc_chckbxProposeFileSave);
+		
+		chckbxExtractEmlBody = new JCheckBox("Extract Eml Body and Attachments");
+		GridBagConstraints gbc_chckbxExtractEmlBody = new GridBagConstraints();
+		gbc_chckbxExtractEmlBody.insets = new Insets(0, 0, 5, 5);
+		gbc_chckbxExtractEmlBody.gridx = 1;
+		gbc_chckbxExtractEmlBody.gridy = 5;
+		outputPanel.add(chckbxExtractEmlBody, gbc_chckbxExtractEmlBody);
+		
+		outputDirField = new JTextField();
+		GridBagConstraints gbc_outputDirField = new GridBagConstraints();
+		gbc_outputDirField.insets = new Insets(0, 0, 5, 0);
+		gbc_outputDirField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_outputDirField.gridx = 2;
+		gbc_outputDirField.gridy = 5;
+		outputPanel.add(outputDirField, gbc_outputDirField);
+		outputDirField.setColumns(10);
+		
+		JButton btnSelectOutputDirectory = new JButton("Select output directory");
+		btnSelectOutputDirectory.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				File file = openFile(outputDirField.getText(), "Select Output directory", null);
+				if (file != null) {
+					outputDirField.setText(file.getAbsolutePath());
+				}
+			}
+		});
+		GridBagConstraints gbc_btnSelectOutputDirectory = new GridBagConstraints();
+		gbc_btnSelectOutputDirectory.gridx = 2;
+		gbc_btnSelectOutputDirectory.gridy = 6;
+		outputPanel.add(btnSelectOutputDirectory, gbc_btnSelectOutputDirectory);
 
 		JLabel lblTitle = new JLabel("Vitam Configuration");
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
@@ -751,6 +782,8 @@ public class VitamConfigDialog extends JPanel {
 				.setSelected(StaticValues.config.argument.outputModel == VitamOutputModel.MultipleXML);
 		rdbtnSingleXmlOutput
 				.setSelected(StaticValues.config.argument.outputModel == VitamOutputModel.OneXML);
+		chckbxExtractEmlBody.setSelected(StaticValues.config.extractFile);
+		outputDirField.setText(StaticValues.config.outputDir);
 	}
 
 	public void saveConfig() {
@@ -844,6 +877,10 @@ public class VitamConfigDialog extends JPanel {
 		} else if (rdbtnSingleXmlOutput.isSelected()) {
 			StaticValues.config.argument.outputModel = VitamOutputModel.OneXML;
 		}
+		if (!StaticValues.config.outputDir.equals(outputDirField.getText())) {
+			StaticValues.config.outputDir = outputDirField.getText();
+		}
+		StaticValues.config.extractFile = chckbxExtractEmlBody.isSelected();
 		if (chckbxUpdateConfigurationFile.isSelected()) {
 			StaticValues.config.saveConfig();
 		}

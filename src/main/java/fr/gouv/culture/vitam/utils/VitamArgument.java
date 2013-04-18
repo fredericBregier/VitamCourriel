@@ -19,6 +19,7 @@ package fr.gouv.culture.vitam.utils;
 
 import java.io.File;
 
+
 /**
  * Class that handles Vitam arguments among various modules
  * 
@@ -52,9 +53,8 @@ public class VitamArgument {
 	public VitamOutputModel outputModel = VitamOutputModel.OneXML;
 	public boolean checkSubFormat;
 	public boolean extractKeyword;
-	public boolean extractFile = false; // XXX FIXME true;
-	public File outputDir = null;// XXX FIXME new File("J:/Temp/test/testdoc/emails/output");
-
+	public File currentOutputDir = null;
+	
 	/**
 	 * @param archive
 	 * @param recursive

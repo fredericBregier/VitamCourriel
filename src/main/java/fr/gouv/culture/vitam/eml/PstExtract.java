@@ -1343,7 +1343,7 @@ public class PstExtract {
 						FileOutputStream output = null;
 						try {
 							output = new FileOutputStream(new File(newDir, filenamebody+".txt"));
-							byte []bb = body.getBytes(StaticValues.CURRENT_OUTPUT_ENCODING);
+							byte []bb = body.getBytes();
 							output.write(bb, 0, bb.length);
 						} catch (FileNotFoundException e) {
 							e.printStackTrace();
@@ -1363,7 +1363,7 @@ public class PstExtract {
 						FileOutputStream output = null;
 						try {
 							output = new FileOutputStream(new File(newDir, filenamebody+".html"));
-							byte []bb = html.getBytes(StaticValues.CURRENT_OUTPUT_ENCODING);
+							byte []bb = html.getBytes();
 							output.write(bb, 0, bb.length);
 						} catch (FileNotFoundException e) {
 							e.printStackTrace();
@@ -1392,7 +1392,7 @@ public class PstExtract {
 						FileOutputStream output = null;
 						try {
 							output = new FileOutputStream(new File(newDir, filenamebody+".rtf"));
-							byte []bb = rtf.getBytes(StaticValues.CURRENT_OUTPUT_ENCODING);
+							byte []bb = rtf.getBytes();
 							output.write(bb, 0, bb.length);
 						} catch (FileNotFoundException e) {
 							e.printStackTrace();

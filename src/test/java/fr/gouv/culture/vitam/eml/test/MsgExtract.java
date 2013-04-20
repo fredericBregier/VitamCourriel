@@ -18,8 +18,9 @@
    You should have received a copy of the GNU General Public License
    along with Waarp .  If not, see <http://www.gnu.org/licenses/>.
  */
-package fr.gouv.culture.vitam.eml;
+package fr.gouv.culture.vitam.eml.test;
 
+/*
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -44,6 +45,7 @@ import fr.gouv.culture.vitam.utils.ConfigLoader;
 import fr.gouv.culture.vitam.utils.StaticValues;
 import fr.gouv.culture.vitam.utils.VitamArgument;
 import fr.gouv.culture.vitam.utils.XmlDom;
+*/
 
 /**
  * http://auxilii.com/msgparser/Page.php?id=100
@@ -53,7 +55,7 @@ import fr.gouv.culture.vitam.utils.XmlDom;
  *
  */
 public class MsgExtract {
-	
+	/*
 	static File curPath = null;
 	
 	private static void addAddress(Element root, String entry, String address, String namead) {
@@ -70,7 +72,7 @@ public class MsgExtract {
 		}
 		root.add(val);
 	}
-	
+	*/
 	/**
 	 * Try to extract the following :
 	 * 
@@ -112,6 +114,7 @@ public class MsgExtract {
 	 * @param config
 	 * @return
 	 */
+	/*
 	public static Element extractInfoEmail(File msgFile, String filename, VitamArgument argument,
 			ConfigLoader config) {
 		Element root = XmlDom.factory.createElement(EMAIL_FIELDS.formatMSG.name);
@@ -196,6 +199,7 @@ public class MsgExtract {
 			System.out.println("getToEmail: "+msg.getToEmail());
 			System.out.println("getDisplayCc: "+msg.getDisplayCc());
 			System.out.println("getDisplayBcc: "+msg.getDisplayBcc());
+			*/
 			/*
 			msg.getToRecipient();
 			msg.getDisplayTo();
@@ -206,7 +210,7 @@ public class MsgExtract {
 			msg.getBccRecipients();
 			msg.getDisplayBcc();
 			*/
-			
+			/*
 			String subject = msg.getSubject();
 			if (subject != null) {
 				Element sub = XmlDom.factory.createElement(EMAIL_FIELDS.subject.name);
@@ -285,7 +289,7 @@ public class MsgExtract {
 				metadata.add(sub);
 			}
 			*/
-			
+			/*
 			String messageId = msg.getMessageId();
 			if (messageId != null) {
 				messageId = StringUtils.removeChevron(StringUtils.unescapeHTML(
@@ -395,7 +399,7 @@ public class MsgExtract {
 			sub.addAttribute(EMAIL_FIELDS.hasAttachment.name, Boolean.toString(Attachments));
 			metadata.add(sub);
 			*/
-			
+			/*
 			// Plain text e-mail body
 			String body = "";
 			if (argument.extractKeyword || config.extractFile) {
@@ -672,13 +676,6 @@ public class MsgExtract {
 		identification.add(newElt);
 		return result;
 	}
-	
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+	*/
 
 }

@@ -1,16 +1,18 @@
-package fr.gouv.culture.vitam.eml;
+package fr.gouv.culture.vitam.eml.test;
 
+/*
 import com.aspose.email.Attachment;
 import com.aspose.email.HeaderCollection;
 import com.aspose.email.MailAddressCollection;
 import com.aspose.email.MailMessage;
 import com.aspose.email.MessageFormat;
-
+*/
 public class AsposeMsgExtract {
 
 	/**
 	 * @param args
 	 */
+	/*
 	public static void main(String[] args) {
         System.out.println("Loading messages....");
         if (args.length <= 0) {
@@ -89,4 +91,5 @@ public class AsposeMsgExtract {
             System.out.println(ex.getMessage());
         }
     }
+    */
 }

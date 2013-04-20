@@ -46,6 +46,8 @@ import fr.gouv.culture.vitam.utils.VitamArgument;
 import fr.gouv.culture.vitam.utils.XmlDom;
 
 /**
+ * Inspired from https://github.com/nicbet/MailboxMiner
+ * 
  * @author "Frederic Bregier"
  * 
  */

@@ -1,4 +1,4 @@
-package fr.gouv.culture.vitam.eml;
+package fr.gouv.culture.vitam.eml.test;
 
 import java.io.File;
 import java.io.FileOutputStream;

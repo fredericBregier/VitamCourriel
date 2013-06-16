@@ -38,8 +38,11 @@ import javax.mail.Session;
 import javax.mail.internet.MailDateFormat;
 import javax.mail.internet.MimeMessage;
 
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 
+import fr.gouv.culture.vitam.digest.Base64;
 import fr.gouv.culture.vitam.eml.StringUtils.EMAIL_FIELDS;
 import fr.gouv.culture.vitam.extract.ExtractInfo;
 import fr.gouv.culture.vitam.utils.Commands;
@@ -528,6 +531,24 @@ public class EmlExtract {
 			headers = message.getHeader("Sensitivity");
 			if (headers != null && headers.length > 0) {
 				prop.addAttribute(EMAIL_FIELDS.sensitivity.name, headers[0]);
+			}
+			headers = message.getHeader("X-RDF");
+			if (headers != null && headers.length > 0) {
+				System.err.println("Found X-RDF");
+				StringBuilder builder = new StringBuilder();
+				for (String string : headers) {
+					builder.append(string);
+					builder.append("\n");
+				}
+				try {
+					byte [] decoded  = org.apache.commons.codec.binary.Base64.decodeBase64(builder.toString());
+					String rdf = new String(decoded);
+					Document tempDocument = DocumentHelper.parseText(rdf);
+					Element xrdf = prop.addElement("x-rdf");
+					xrdf.add(tempDocument.getRootElement());
+				} catch (Exception e) {
+					System.err.println("Cannot decode X-RDF: "+e.getMessage());
+				}
 			}
 			try {
 				File old = argument.currentOutputDir;

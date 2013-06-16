@@ -1471,7 +1471,7 @@ public class VitamGui extends JFrame implements PropertyChangeListener {
 			if (gui.vitamResult != null) {
 				if (gui.vitamResult.unique != null) {
 					gui.vitamResult.unique.getRootElement().addAttribute("numberObject", StaticValues.config.nbDoc.toString());
-					if (StaticValues.config.nbDoc.get() < 1000) {
+					if (StaticValues.config.nbDoc.get() < 100) {
 						String text = null;
 						ByteArrayOutputStream out = new ByteArrayOutputStream();
 						try {

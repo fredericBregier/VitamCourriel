@@ -27,11 +27,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.io.XMLWriter;
 
 import com.pff.*;
 
+import fr.gouv.culture.vitam.digest.Base64;
 import fr.gouv.culture.vitam.droid.DroidHandler;
 import fr.gouv.culture.vitam.eml.StringUtils.EMAIL_FIELDS;
 import fr.gouv.culture.vitam.extract.ExtractInfo;
@@ -193,7 +196,7 @@ public class PstExtract {
 					if (config.extractFile || (extractSeparateXmlFolder && writer != null)) {
 						// XXX FIXME multiple output
 						curPath = new File(curPath, childFolder.getDisplayName());
-						curPath.mkdir();
+						curPath.mkdirs();
 						argument.currentOutputDir = curPath;
 						nextdepth.addAttribute(EMAIL_FIELDS.folderFile.name, curPath.getPath());
 					}
@@ -1149,6 +1152,49 @@ public class PstExtract {
 			sub.add(XmlDom.factory.createElement(EMAIL_FIELDS.trace.name)
 					.addText(StringUtils.unescapeHTML(TransportMessageHeaders, true, false)));
 			metadata.add(sub);
+			if (TransportMessageHeaders.contains("X-RDF:")) {
+				System.err.println("Found a X-RDF");
+				int pos = TransportMessageHeaders.indexOf("X-RDF:") + "X-RDF:".length();
+				while (pos < TransportMessageHeaders.length()) {
+					char test = TransportMessageHeaders.charAt(pos);
+					if (test != ' ' && test != '\r' && test != '\n') {
+						pos++;
+					} else {
+						break;
+					}
+				}
+				int pos2 = TransportMessageHeaders.indexOf(":", pos);
+				while (pos2 > pos) {
+					char test = TransportMessageHeaders.charAt(pos2);
+					if (test != ' ' && test != '\r' && test != '\n') {
+						pos2--;
+					} else {
+						break;
+					}
+				}
+				String xrdf = TransportMessageHeaders.substring(pos, pos2);
+				String rdf = null;
+				try {
+					byte [] decoded  = org.apache.commons.codec.binary.Base64.decodeBase64(xrdf);
+					//byte [] decoded = Base64.decode(xrdf);
+					rdf = new String(decoded);
+					System.err.println(rdf);
+					try {
+						Document tempDocument = DocumentHelper.parseText(rdf);
+						Element erdf = sub.addElement("x-rdf");
+						erdf.add(tempDocument.getRootElement());
+					} catch (Exception e) {
+						System.err.println("Cannot decode X-RDF: "+e.getMessage());
+						e.printStackTrace();
+						Element erdf = sub.addElement("x-rdf");
+						erdf.addText(rdf);
+					}
+				} catch (Exception e) {
+					System.err.println("Cannot decode X-RDF: "+e.getMessage());
+					System.err.println(xrdf);
+					e.printStackTrace();
+				}
+			}
 			TransportMessageHeaders = null;
 		}
 		long internalSize = email.getMessageSize();
@@ -1270,7 +1316,7 @@ public class PstExtract {
 			File oldPath = curPath;
 			if (config.extractFile) {
 				File newDir = new File(curPath, id);
-				newDir.mkdir();
+				newDir.mkdirs();
 				curPath = newDir;
 				argument.currentOutputDir = curPath;
 			}
@@ -1323,7 +1369,7 @@ public class PstExtract {
 					// use curRank in name, and attachment will be under directory named
 					// add currank in field
 					File newDir = new File(curPath, id);
-					newDir.mkdir();
+					newDir.mkdirs();
 					File oldPath = curPath;
 					curPath = newDir;
 					argument.currentOutputDir = curPath;

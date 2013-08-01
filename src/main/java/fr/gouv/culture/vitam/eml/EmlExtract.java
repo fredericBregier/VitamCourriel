@@ -79,6 +79,46 @@ public class EmlExtract {
 		return value;
 	}
 	
+	private static void addAddress(Element root, String entry, String []addresses, String except) {
+		for (String address : addresses) {
+			if (address.contains(",")) {
+				// multiple emails
+				String [] split = address.split(",");
+				for (String sub : split) {
+					String value = sub;
+					String ad = StringUtils.selectChevron(value);
+					if (ad == null || (except != null && ad.equalsIgnoreCase(except))) {
+						continue;
+					}
+					String nams = value.replace('<'+ad+'>', "");
+					Element val = XmlDom.factory.createElement(entry);
+					Element name = XmlDom.factory.createElement(EMAIL_FIELDS.emailName.name);
+					Element addresse = XmlDom.factory.createElement(EMAIL_FIELDS.emailAddress.name);
+					name.setText(StringUtils.unescapeHTML(nams, true, false));
+					addresse.setText(StringUtils.unescapeHTML(ad, true, false));
+					val.add(name);
+					val.add(addresse);
+					root.add(val);
+				}
+			} else {
+				String value = address;
+				String ad = StringUtils.selectChevron(value);
+				if (ad == null || (except != null && ad.equalsIgnoreCase(except))) {
+					continue;
+				}
+				String nams = value.replace('<'+ad+'>', "");
+				Element val = XmlDom.factory.createElement(entry);
+				Element name = XmlDom.factory.createElement(EMAIL_FIELDS.emailName.name);
+				Element addresse = XmlDom.factory.createElement(EMAIL_FIELDS.emailAddress.name);
+				name.setText(StringUtils.unescapeHTML(nams, true, false));
+				addresse.setText(StringUtils.unescapeHTML(ad, true, false));
+				val.add(name);
+				val.add(addresse);
+				root.add(val);
+			}
+		}
+	}
+	
 	/**
 	 * Try to extract the following :
 	 * 
@@ -234,9 +274,10 @@ public class EmlExtract {
 				partialResult = message.getHeader("ReplyTo");
 				if (partialResult != null && partialResult.length > 0) {
 					sub2 = XmlDom.factory.createElement(EMAIL_FIELDS.replyTo.name);
-					Element add = XmlDom.factory.createElement(EMAIL_FIELDS.fromUnit.name);
+					addAddress(sub2, EMAIL_FIELDS.fromUnit.name, partialResult, null);
+					/*Element add = XmlDom.factory.createElement(EMAIL_FIELDS.fromUnit.name);
 					add.setText(partialResult[0]);
-					sub2.add(add);
+					sub2.add(add);*/
 					metadata.add(sub2);
 				}
 			} catch (MessagingException e) {
@@ -258,11 +299,12 @@ public class EmlExtract {
 				partialResult = message.getHeader("To");
 				if (partialResult != null && partialResult.length > 0) {
 					sub2 = XmlDom.factory.createElement(EMAIL_FIELDS.toRecipients.name);
-					for (String string : partialResult) {
+					addAddress(sub2, EMAIL_FIELDS.toUnit.name, partialResult, null);
+					/*for (String string : partialResult) {
 						Element add = XmlDom.factory.createElement(EMAIL_FIELDS.toUnit.name);
 						add.setText(string);
 						sub2.add(add);
-					}
+					}*/
 					metadata.add(sub2);
 				}
 			} catch (MessagingException e) {
@@ -284,11 +326,12 @@ public class EmlExtract {
 				partialResult = message.getHeader("Cc");
 				if (partialResult != null && partialResult.length > 0) {
 					sub2 = XmlDom.factory.createElement(EMAIL_FIELDS.ccRecipients.name);
-					for (String string : partialResult) {
+					addAddress(sub2, EMAIL_FIELDS.ccUnit.name, partialResult, null);
+					/*for (String string : partialResult) {
 						Element add = XmlDom.factory.createElement(EMAIL_FIELDS.ccUnit.name);
 						add.setText(string);
 						sub2.add(add);
-					}
+					}*/
 					metadata.add(sub2);
 				}
 			} catch (MessagingException e) {
@@ -310,11 +353,12 @@ public class EmlExtract {
 				partialResult = message.getHeader("Cc");
 				if (partialResult != null && partialResult.length > 0) {
 					sub2 = XmlDom.factory.createElement(EMAIL_FIELDS.bccRecipients.name);
-					for (String string : partialResult) {
+					addAddress(sub2, EMAIL_FIELDS.bccUnit.name, partialResult, null);
+					/*for (String string : partialResult) {
 						Element add = XmlDom.factory.createElement(EMAIL_FIELDS.bccUnit.name);
 						add.setText(string);
 						sub2.add(add);
-					}
+					}*/
 					metadata.add(sub2);
 				}
 			} catch (MessagingException e) {
@@ -630,7 +674,7 @@ public class EmlExtract {
 					charset = charset.substring(0, pos).trim();
 				}
 				if (charset.startsWith("\"")) {
-					pos = charset.indexOf('\"', 1);
+					pos = charset.indexOf('\"', 2);
 					if (pos > 0) {
 						charset = charset.substring(1, pos).trim();
 					}
@@ -654,31 +698,35 @@ public class EmlExtract {
 		return result;
 	}
 	
-	private static final String saveBody(String content, String []aresult, String id, VitamArgument argument, ConfigLoader config) throws MessagingException, IOException {
+	private static final String saveBody(InputStream stream, String []aresult, String id, VitamArgument argument, ConfigLoader config) throws MessagingException, IOException {
 		String tosave = null;
 		if (config.extractFile) {
 			FileOutputStream outputStream = new FileOutputStream(new File(argument.currentOutputDir, id+"_body"+aresult[3]));
 			if (aresult[2] != null && aresult[2].equals("quoted-printable")) {
-				tosave = StringUtils.unescapeQuotedPrintable((String) content, aresult[1]);
+				tosave = StringUtils.unescapeQuotedPrintable(stream, aresult[1]);
 			} else {
-				if (aresult[1] != null) {
+				/*if (aresult[1] != null) {
 					tosave = new String(((String) content).getBytes(), aresult[1]);
 				} else {
 					tosave = ((String) content);
-				}
+				}*/
+				tosave = StringUtils.undecodeString(stream, aresult[1]);
+				//tosave = content;
 			}
 			outputStream.write(tosave.getBytes(StaticValues.CURRENT_OUTPUT_ENCODING));
+			//outputStream.write(tosave.getBytes());
 			outputStream.flush();
 			outputStream.close();
 		} else if (argument.extractKeyword) {
 			if (aresult[2].equals("quoted-printable")) {
-				tosave = StringUtils.unescapeQuotedPrintable((String) content, aresult[1]);
+				tosave = StringUtils.unescapeQuotedPrintable(stream, aresult[1]);
 			} else {
-				if (aresult[1] != null) {
+				/*if (aresult[1] != null) {
 					tosave = new String(((String) content).getBytes(), aresult[1]);
 				} else {
 					tosave = ((String) content);
-				}
+				}*/
+				tosave = StringUtils.undecodeString(stream, aresult[1]);
 			}
 		}
 		return tosave;
@@ -702,7 +750,8 @@ public class EmlExtract {
 				body.addAttribute("charset", aresult[1]);
 			}
 			metadata.add(body);
-			result = saveBody((String) content, aresult, id, argument, config);
+			//result = saveBody((String) content.toString(), aresult, id, argument, config);
+			result = saveBody(message.getInputStream(), aresult, id, argument, config);
 		} else if (content instanceof Multipart) {
 			// handle multi part
 			prop.addAttribute(EMAIL_FIELDS.hasAttachment.name, "true");
@@ -749,7 +798,8 @@ public class EmlExtract {
 				identification.add(identity);
 				emlroot.add(subidenti);
 				identification.add(emlroot);
-				result += " " + saveBody((String) content, aresult, id, argument, config);
+				//result += " " + saveBody((String) content.toString(), aresult, id, argument, config);
+				result += " " + saveBody(bp.getInputStream(), aresult, id, argument, config);
 			} else if (content instanceof InputStream) {
 				// handle input stream
 				if (argument.extractKeyword) {
@@ -926,7 +976,8 @@ public class EmlExtract {
 			identification.add(identity);
 			emlroot.add(subidenti);
 			identification.add(emlroot);
-			result += " " + saveBody((String) content, aresult, id, argument, config);
+			//result += " " + saveBody((String) content.toString(), aresult, id, argument, config);
+			result += " " + saveBody(message.getInputStream(), aresult, id, argument, config);
 			// ignore string
 		} else if (content instanceof Multipart) {
 			Multipart mp = (Multipart) content;
@@ -967,7 +1018,8 @@ public class EmlExtract {
 				identification.add(identity);
 				emlroot.add(subidenti);
 				identification.add(emlroot);
-				result += " " + saveBody((String) content, aresult, id, argument, config);
+				//result += " " + saveBody((String) content.toString(), aresult, id, argument, config);
+				result += " " + saveBody(bp.getInputStream(), aresult, id, argument, config);
 				// ignore string
 			} else if (content instanceof InputStream) {
 				// handle input stream

@@ -597,6 +597,47 @@ public class StringUtils {
 		}
 	}
 	
+	public static final String undecodeString(String source, String charset) {
+		if (charset == null) {
+			return source;
+		}
+		ByteArrayInputStream in = new ByteArrayInputStream(source.getBytes());
+		Writer writer = new StringWriter();
+        char[] buffer = new char[1024];
+        try {
+            Reader reader = null;
+           	reader = new BufferedReader(new InputStreamReader(in, charset));
+            int n;
+            while ((n = reader.read(buffer)) != -1) {
+                writer.write(buffer, 0, n);
+            }
+        } catch (IOException e) {
+			try {
+				in.close();
+			} catch (IOException e1) {
+			}
+			try {
+				writer.close();
+			} catch (IOException e1) {
+			}
+		} finally {
+            try {
+				in.close();
+			} catch (IOException e) {
+			}
+            try {
+				writer.flush();
+			} catch (IOException e) {
+			}
+            try {
+				writer.close();
+			} catch (IOException e) {
+			}
+        }
+        String out = writer.toString();
+        return out;
+	}
+	
 	public static final String unescapeQuotedPrintable(String source, String charset) throws UnsupportedEncodingException, MessagingException {
 		ByteArrayInputStream in = new ByteArrayInputStream(source.getBytes());
 		InputStream decodedIn = MimeUtility.decode(in, "quoted-printable");
@@ -635,6 +676,105 @@ public class StringUtils {
 			}
             try {
 				in.close();
+			} catch (IOException e) {
+			}
+            try {
+				writer.flush();
+			} catch (IOException e) {
+			}
+            try {
+				writer.close();
+			} catch (IOException e) {
+			}
+        }
+        String out = writer.toString();
+        return out;
+	}
+
+	public static final String undecodeString(InputStream source, String charset) {
+		if (charset == null) {
+			try {
+				byte[]c = new byte[source.available()];
+				source.read(c);
+				return new String(c);
+			} catch (IOException e) {
+				System.err.println("Error: "+e.getMessage());
+				return "";
+			}
+		}
+		Writer writer = new StringWriter();
+        char[] buffer = new char[1024];
+        try {
+            Reader reader = null;
+           	reader = new BufferedReader(new InputStreamReader(source, charset));
+            int n;
+            while ((n = reader.read(buffer)) != -1) {
+                writer.write(buffer, 0, n);
+            }
+        } catch (IOException e) {
+			try {
+				source.close();
+			} catch (IOException e1) {
+			}
+			try {
+				writer.close();
+			} catch (IOException e1) {
+			}
+		} finally {
+            try {
+				source.close();
+			} catch (IOException e) {
+			}
+            try {
+				writer.flush();
+			} catch (IOException e) {
+			}
+            try {
+				writer.close();
+			} catch (IOException e) {
+			}
+        }
+        String out = writer.toString();
+        return out;
+	}
+	
+	public static final String unescapeQuotedPrintable(InputStream source, String charset) throws UnsupportedEncodingException, MessagingException {
+		InputStream decodedIn = MimeUtility.decode(source, "quoted-printable");
+		Writer writer = new StringWriter();
+        char[] buffer = new char[1024];
+        try {
+            Reader reader = null;
+            if (charset != null) {
+            	reader = new BufferedReader(new InputStreamReader(decodedIn, charset));
+            } else {
+            	reader = new BufferedReader(new InputStreamReader(decodedIn));
+            }
+            int n;
+            while ((n = reader.read(buffer)) != -1) {
+                writer.write(buffer, 0, n);
+            }
+        } catch (IOException e) {
+			if (decodedIn != null) {
+				try {
+					decodedIn.close();
+				} catch (IOException e1) {
+				}
+			}
+			try {
+				source.close();
+			} catch (IOException e1) {
+			}
+			try {
+				writer.close();
+			} catch (IOException e1) {
+			}
+		} finally {
+            try {
+				decodedIn.close();
+			} catch (IOException e) {
+			}
+            try {
+            	source.close();
 			} catch (IOException e) {
 			}
             try {

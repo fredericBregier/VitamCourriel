@@ -29,7 +29,7 @@
    <entry key="vitam.location">fr:gouv:culture:vitam:v1.0</entry>
    <entry key="vitam.ranklimit">1</entry>
    <entry key="vitam.sha256">0</entry>
-   <entry key="vitam.exportdir">J:\out</entry>
+   <entry key="vitam.exportdir">J:\out2</entry>
    <entry key="vitam.unoconv">unoconv/unoconv.py</entry>
    <entry key="vitam.export">1</entry>
    <entry key="vitam.sha1">0</entry>
